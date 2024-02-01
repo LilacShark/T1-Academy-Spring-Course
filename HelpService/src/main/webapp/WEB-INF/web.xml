@@ -5,9 +5,13 @@
 
     <servlet>
         <servlet-name>cheeringServlet</servlet-name>
-        <servlet-class>package mts.services.help.CheeringServlet</servlet-class>
+        <servlet-class>mts.services.help.CheeringServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>cheeringServlet</servlet-name>
+        <url-pattern>/support</url-pattern>
+    </servlet-mapping>
 
 </web-app>
 
