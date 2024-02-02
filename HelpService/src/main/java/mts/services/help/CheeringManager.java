@@ -15,6 +15,6 @@ public class CheeringManager {
 
     public String addCheeringPhrase(String phrase) {
         repository.addCheeringPhrase(phrase);
-        return "Добалвена фраза: " + phrase;
+        return "Добавлена фраза: " + phrase;
     }
 }

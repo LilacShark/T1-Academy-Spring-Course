@@ -20,22 +20,21 @@ public class CheeringServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.getWriter().println("<html><body>");
-        resp.getWriter().println(manager.getCheeringPhrase());
-        resp.getWriter().println("</body></html>");
+        resp.setContentType("text/plain");
+        resp.getWriter().append(manager.getCheeringPhrase());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.getWriter().println("<html><body>");
-        resp.getWriter().println(manager.addCheeringPhrase(req.getParameter("phrase")));
-        resp.getWriter().println("</body></html>");
+        resp.setContentType("text/plain");
+        resp.getWriter().append(manager.addCheeringPhrase(req.getParameter("phrase")));
     }
 
 
     public CheeringServlet() {
     }
 
+    public CheeringServlet(CheeringManager manager) {
+        this.manager = manager;
+    }
 }
