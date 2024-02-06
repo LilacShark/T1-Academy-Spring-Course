@@ -34,21 +34,17 @@ class CheeringServletTest {
 
         PrintWriter writer = new PrintWriter(responseWriter);
         when(resp.getWriter()).thenReturn(writer);
-//        when(resp.getWriter()).thenReturn(new PrintWriter(responseWriter));
     }
 
 
     @Test
     @DisplayName("Вовзрат корректной фразы из репозитория при вызове doGet")
     void handleDoGet() throws ServletException, IOException {
-//        MockitoAnnotations.initMocks(this);
         //given
         String testPhrase = "Тестовое подбадривание";
         doReturn(testPhrase).when(this.manager).getCheeringPhrase();
 
         //when
-//        when(resp.getWriter()).thenReturn(writer);
-
         this.servlet.doGet(req, resp);
 
         //then
@@ -77,14 +73,3 @@ class CheeringServletTest {
     }
 }
 
-/*
-    //    @Mock
-    private CheeringManager manager;
-    //    @Mock
-    private HttpServletRequest req;
-    //    @Mock
-    private HttpServletResponse resp;
-
-    //    @InjectMocks
-    private CheeringServlet servlet;
- */
