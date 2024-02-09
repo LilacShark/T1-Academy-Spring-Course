@@ -42,6 +42,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+
 <!--        TEST-->
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
         <dependency>

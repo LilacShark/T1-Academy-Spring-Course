@@ -7,15 +7,27 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 
 public class CheeringServlet extends HttpServlet {
 
     private CheeringManager manager;
+    private ApplicationContext context;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        this.manager = new CheeringManager();
+        try {
+            context = new ApplicationContext();
+            System.out.println("CONTEXT");
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+//        this.cheeringServiceImp = context.getInstance(CheeringServiceImp.class);
+        this.manager = context.getInstance(CheeringManager.class);
     }
 
     @Override
@@ -34,7 +46,7 @@ public class CheeringServlet extends HttpServlet {
     public CheeringServlet() {
     }
 
-    public CheeringServlet(CheeringManager manager) {
+    public void setManager(CheeringManager manager) {
         this.manager = manager;
     }
 }

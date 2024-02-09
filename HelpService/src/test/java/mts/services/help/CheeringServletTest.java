@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -17,9 +18,10 @@ import static org.mockito.Mockito.*;
 
 class CheeringServletTest {
 
-    private CheeringManager manager;
+
     private HttpServletRequest req;
     private HttpServletResponse resp;
+    private CheeringManager manager;
     private CheeringServlet servlet;
     private StringWriter responseWriter;
 
@@ -29,11 +31,13 @@ class CheeringServletTest {
         manager = mock(CheeringManager.class);
         req = mock(HttpServletRequest.class);
         resp = mock(HttpServletResponse.class);
-        servlet = new CheeringServlet(manager);
-        responseWriter = new StringWriter();
+        servlet = new CheeringServlet();
+        servlet.setManager(manager);
 
+        responseWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(responseWriter);
         when(resp.getWriter()).thenReturn(writer);
+
     }
 
 
@@ -71,5 +75,6 @@ class CheeringServletTest {
         assertEquals(response, responseWriter.toString());
 
     }
+
 }
 

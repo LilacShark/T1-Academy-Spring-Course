@@ -2,19 +2,22 @@ package mts.services.help;
 
 public class CheeringManager {
 
-    private final CheeringInMemRepository repository;
+    private CheeringService cheeringService;
 
-    public CheeringManager() {
-        this.repository = new CheeringInMemRepository();
+    public CheeringManager(CheeringService cheeringService) {
+        this.cheeringService = cheeringService;
     }
 
-    public String getCheeringPhrase() {
+    public String provideSupport() {
+        return "Подбрадривание для Вас: %s".formatted(cheeringService.getPhrase());
+    }
 
-        return repository.getCheeringPhrase();
+
+    public String getCheeringPhrase() {
+        return cheeringService.getCheeringPhrase();
     }
 
     public String addCheeringPhrase(String phrase) {
-        repository.addCheeringPhrase(phrase);
-        return "Добавлена фраза: " + phrase;
+        return cheeringService.addCheeringPhrase(phrase);
     }
 }
