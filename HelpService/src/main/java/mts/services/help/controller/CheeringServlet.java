@@ -1,10 +1,12 @@
-package mts.services.help;
+package mts.services.help.controller;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mts.services.help.ApplicationContext;
+import mts.services.help.CheeringManager;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,9 +23,7 @@ public class CheeringServlet extends HttpServlet {
         try {
             context = new ApplicationContext();
             System.out.println("CONTEXT");
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
 //        this.cheeringServiceImp = context.getInstance(CheeringServiceImp.class);

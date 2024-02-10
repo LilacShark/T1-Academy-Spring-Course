@@ -1,4 +1,4 @@
-package mts.services.help;
+package mts.services.help.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;

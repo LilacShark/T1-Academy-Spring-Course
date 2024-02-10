@@ -12,7 +12,6 @@ public class CheeringManager {
         return "Подбрадривание для Вас: %s".formatted(cheeringService.getPhrase());
     }
 
-
     public String getCheeringPhrase() {
         return cheeringService.getCheeringPhrase();
     }

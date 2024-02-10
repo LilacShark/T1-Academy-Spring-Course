@@ -1,4 +1,4 @@
-package mts.services.help;
+package mts.services.help.repository;
 
 import java.util.HashMap;
 

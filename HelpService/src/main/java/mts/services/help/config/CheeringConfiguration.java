@@ -1,7 +1,7 @@
 package mts.services.help.config;
 
-import mts.services.help.CheeringInMemRepository;
 import mts.services.help.CheeringManager;
+import mts.services.help.repository.CheeringInMemRepository;
 import mts.services.help.CheeringService;
 import mts.services.help.CheeringServiceImp;
 
@@ -14,7 +14,7 @@ public class CheeringConfiguration {
     // если поменять CheeringService и CheeringManager местами в конфиге,
     // то в тесте CheeringManagerTest возможен случай, когда
     // cheeringService не инициализирован.
-    // Если запускать не конкретный тест, а весь сестовый класс, то ошибка 100%
+    // Если запускать не конкретный тест, а весь тестовый класс, то ошибка 100%
 
     @Instance
     public CheeringService cheeringService(CheeringInMemRepository repository) {
