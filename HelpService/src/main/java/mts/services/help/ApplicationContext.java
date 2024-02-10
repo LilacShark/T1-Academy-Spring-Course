@@ -1,6 +1,5 @@
 package mts.services.help;
 
-import javassist.tools.reflect.Reflection;
 import mts.services.help.config.Configuration;
 import mts.services.help.config.Instance;
 import org.reflections.Reflections;
@@ -11,7 +10,7 @@ import java.util.*;
 
 public class ApplicationContext {
 
-    private Map<Class<?>, Object> instances = new HashMap<>();
+    private final Map<Class<?>, Object> instances = new HashMap<>();
 
     public ApplicationContext() throws InvocationTargetException, IllegalAccessException {
         Reflections reflections = new Reflections("mts.services.help.config");

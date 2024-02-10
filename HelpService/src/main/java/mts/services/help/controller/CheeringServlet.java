@@ -1,5 +1,6 @@
 package mts.services.help.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -7,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
 import mts.services.help.CheeringManager;
+import mts.services.help.view.SupportRequest;
+import mts.services.help.view.SupportResponse;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -26,20 +29,43 @@ public class CheeringServlet extends HttpServlet {
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-//        this.cheeringServiceImp = context.getInstance(CheeringServiceImp.class);
         this.manager = context.getInstance(CheeringManager.class);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/plain");
-        resp.getWriter().append(manager.getCheeringPhrase());
+        ObjectMapper mapper = new ObjectMapper();
+
+//        resp.setContentType("text/plain");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+//        resp.getWriter().append(manager.getCheeringPhrase());
+
+        SupportResponse supportResponse = manager.getCheeringPhrase();
+//        mapper.writeValueAsString();
+        mapper.writeValue(resp.getWriter(), supportResponse);
+
+
+        resp.getWriter().flush();
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/plain");
-        resp.getWriter().append(manager.addCheeringPhrase(req.getParameter("phrase")));
+        ObjectMapper mapper = new ObjectMapper();
+//        resp.setContentType("text/plain");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        SupportRequest supportRequest = mapper.readValue(req.getReader(), SupportRequest.class);
+        SupportResponse supportResponse = manager.addCheeringPhrase(supportRequest);
+
+//        String phrase = req.getParameter("phrase");
+//        String response = manager.depricated_addCheeringPhrase(phrase);
+//        resp.getWriter().append(response);
+
+        resp.getWriter().append(mapper.writeValueAsString(supportResponse));
+        resp.getWriter().flush();
     }
 
 

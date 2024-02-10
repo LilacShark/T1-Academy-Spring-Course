@@ -15,4 +15,5 @@ public class SupportRequest {
     public void setSupportPhrase(String supportPhrase) {
         this.supportPhrase = supportPhrase;
     }
+
 }

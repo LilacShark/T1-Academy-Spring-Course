@@ -3,17 +3,26 @@ package mts.services.help.view;
 public class SupportResponse {
 
     private String supportPhrase;
-    private String error;
+    private String status;
 
-    public SupportResponse(String supportPhrase) {
+    public SupportResponse(String supportPhrase, String status) {
         this.supportPhrase = supportPhrase;
+        this.status = status;
     }
 
     public void setSupportPhrase(String supportPhrase) {
         this.supportPhrase = supportPhrase;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSupportPhrase() {
+        return supportPhrase;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

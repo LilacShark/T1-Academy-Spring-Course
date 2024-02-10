@@ -13,7 +13,7 @@ public class MappingHandler {
 //    TODO: сделать сбор маппинга динамическим, чтобы не менять компонент
     public MappingHandler() throws NoSuchMethodException {
         // Возможно тут должны быть методы сервлета
-        urlMapping.put("getPhrase", CheeringManager.class.getMethod("getCheeringPhrase"));
+        urlMapping.put("getPhrase", CheeringManager.class.getMethod("depricated_getCheeringPhrase"));
         urlMapping.put("addPhrase", CheeringManager.class.getMethod("addCheeringPhrase"));
 //        urlMapping.put("getPhrase", CheeringServlet.class.getMethod("doGet"));
 //        urlMapping.put("addPhrase", CheeringServlet.class.getMethod("doPost"));
