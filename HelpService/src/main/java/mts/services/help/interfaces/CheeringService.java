@@ -1,4 +1,4 @@
-package mts.services.help;
+package mts.services.help.interfaces;
 
 public interface CheeringService {
     String getPhrase();

@@ -1,4 +1,4 @@
-package mts.services.help.controller;
+package mts.services.help.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletConfig;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 
-public class CheeringServlet extends HttpServlet {
+public class DEP_CheeringServlet extends HttpServlet {
 
     private CheeringManager manager;
     private ApplicationContext context;
@@ -69,7 +69,7 @@ public class CheeringServlet extends HttpServlet {
     }
 
 
-    public CheeringServlet() {
+    public DEP_CheeringServlet() {
     }
 
     public void setManager(CheeringManager manager) {

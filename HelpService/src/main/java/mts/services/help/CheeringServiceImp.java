@@ -1,5 +1,6 @@
 package mts.services.help;
 
+import mts.services.help.interfaces.CheeringService;
 import mts.services.help.repository.CheeringInMemRepository;
 
 public class CheeringServiceImp implements CheeringService {

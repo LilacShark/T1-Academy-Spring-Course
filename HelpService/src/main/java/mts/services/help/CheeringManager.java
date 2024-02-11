@@ -1,5 +1,6 @@
 package mts.services.help;
 
+import mts.services.help.interfaces.CheeringService;
 import mts.services.help.view.SupportRequest;
 import mts.services.help.view.SupportResponse;
 
@@ -15,14 +16,6 @@ public class CheeringManager {
         return "Подбрадривание для Вас: %s".formatted(cheeringService.getPhrase());
     }
 
-    public String depricated_getCheeringPhrase() {
-        return cheeringService.getCheeringPhrase();
-    }
-
-    public String depricated_addCheeringPhrase(String phrase) {
-        return cheeringService.addCheeringPhrase(phrase);
-    }
-
     public SupportResponse addCheeringPhrase(SupportRequest supportRequest) {
         String added = cheeringService.addCheeringPhrase(supportRequest.getSupportPhrase());
         return new SupportResponse(added, "OK");
@@ -31,5 +24,13 @@ public class CheeringManager {
     public SupportResponse getCheeringPhrase() {
         String cheeringPhrase = cheeringService.getCheeringPhrase();
         return new SupportResponse(cheeringPhrase, "OK");
+    }
+
+    public String depricated_getCheeringPhrase() {
+        return cheeringService.getCheeringPhrase();
+    }
+
+    public String depricated_addCheeringPhrase(String phrase) {
+        return cheeringService.addCheeringPhrase(phrase);
     }
 }

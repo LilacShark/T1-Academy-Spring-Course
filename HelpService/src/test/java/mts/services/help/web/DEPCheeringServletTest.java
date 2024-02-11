@@ -1,12 +1,9 @@
-package mts.services.help.controller;
+package mts.services.help.web;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.CheeringManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,11 +12,11 @@ import java.io.StringWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class CheeringServletTest {
+class DEPCheeringServletTest {
     private HttpServletRequest req;
     private HttpServletResponse resp;
     private CheeringManager manager;
-    private CheeringServlet servlet;
+    private DEP_CheeringServlet servlet;
     private StringWriter responseWriter;
 
     @BeforeEach
@@ -28,7 +25,7 @@ class CheeringServletTest {
         manager = mock(CheeringManager.class);
         req = mock(HttpServletRequest.class);
         resp = mock(HttpServletResponse.class);
-        servlet = new CheeringServlet();
+        servlet = new DEP_CheeringServlet();
         servlet.setManager(manager);
 
         responseWriter = new StringWriter();

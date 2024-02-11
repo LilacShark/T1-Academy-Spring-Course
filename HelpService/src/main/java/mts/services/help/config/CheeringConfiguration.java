@@ -2,11 +2,10 @@ package mts.services.help.config;
 
 import mts.services.help.CheeringManager;
 import mts.services.help.repository.CheeringInMemRepository;
-import mts.services.help.CheeringService;
+import mts.services.help.interfaces.CheeringService;
 import mts.services.help.CheeringServiceImp;
 
-//46:50
-// домашка на 20 минуте
+
 @Configuration
 public class CheeringConfiguration {
 
