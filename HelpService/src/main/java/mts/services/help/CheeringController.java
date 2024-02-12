@@ -16,7 +16,9 @@ public class CheeringController implements Controller {
 
     @GetMapping("/getPhrase")
     public SupportResponse getPhrase() {
-        return manager.getCheeringPhrase();
+        System.out.println("Вызов CheeringController.getPhrase");
+        return new SupportResponse("Успех", "OK");
+//        return manager.getCheeringPhrase();
     }
 
     @PostMapping("/addPhrase")

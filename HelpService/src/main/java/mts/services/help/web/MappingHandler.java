@@ -1,5 +1,6 @@
 package mts.services.help.web;
 
+import jakarta.servlet.http.HttpServletRequest;
 import mts.services.help.CheeringController;
 import mts.services.help.view.SupportRequest;
 
@@ -27,4 +28,10 @@ public class MappingHandler {
     }
 
 
+    public Method getControllerMethod(HttpServletRequest req) {
+        String pathInfo = req.getPathInfo();
+        Method method = urlMapping.get(pathInfo);
+        System.out.println("pathInfo = " + pathInfo);
+        return method;
+    }
 }
