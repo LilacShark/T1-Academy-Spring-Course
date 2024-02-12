@@ -1,4 +1,4 @@
-package mts.services.help;
+package mts.services.help.controllers;
 
 import mts.services.help.config.PostMapping;
 import mts.services.help.interfaces.CheeringManager;
@@ -17,8 +17,6 @@ public class CheeringController implements Controller {
 
     @GetMapping("/getPhrase")
     public SupportResponse getPhrase() {
-        System.out.println("Вызов CheeringController.getPhrase");
-//        return new SupportResponse("Успех", "OK");
         return cheeringManager.getCheeringPhrase();
     }
 

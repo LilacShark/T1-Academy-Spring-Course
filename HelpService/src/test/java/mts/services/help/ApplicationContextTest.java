@@ -14,8 +14,8 @@ public class ApplicationContextTest {
 
     @Test
     @DisplayName("Контекст возвращает экземпляр класса")
-    public void getInstance() throws InvocationTargetException, IllegalAccessException {
-        ApplicationContext context = new ApplicationContext();
+    public void getInstance() {
+        ApplicationContext context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
         assertEquals(CheeringInMemRepository.class,context.getInstance(CheeringInMemRepository.class).getClass());
         assertEquals(CheeringServiceImp.class,context.getInstance(CheeringService.class).getClass());
         assertEquals(CheeringManagerImp.class,context.getInstance(CheeringManager.class).getClass());

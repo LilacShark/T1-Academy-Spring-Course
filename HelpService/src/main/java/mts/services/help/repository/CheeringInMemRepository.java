@@ -1,10 +1,11 @@
 package mts.services.help.repository;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CheeringInMemRepository {
 
-    private final HashMap<Integer, String> phrasesHashMap = new HashMap<>();
+    private final Map<Integer, String> phrasesHashMap = new ConcurrentHashMap<>();
 
     public CheeringInMemRepository() {
 

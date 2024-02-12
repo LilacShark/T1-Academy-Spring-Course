@@ -12,8 +12,8 @@ class CheeringManagerTest {
 
     @Test
     @DisplayName("Сервис возвращает фразу поддержки")
-    public void getPhrase() throws InvocationTargetException, IllegalAccessException {
-        ApplicationContext context = new ApplicationContext();
+    public void getPhrase() {
+        ApplicationContext context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
         CheeringManager manager = context.getInstance(CheeringManager.class);
         assertEquals("Подбрадривание для Вас: Тестовое подбадривание",
                 manager.provideSupport());

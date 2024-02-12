@@ -1,23 +1,17 @@
 package mts.services.help.config;
 
 import mts.services.help.CheeringManagerImp;
-import mts.services.help.CheeringController;
+import mts.services.help.controllers.CheeringController;
 import mts.services.help.interfaces.CheeringManager;
+import mts.services.help.interfaces.MappingHandler;
 import mts.services.help.repository.CheeringInMemRepository;
 import mts.services.help.interfaces.CheeringService;
 import mts.services.help.CheeringServiceImp;
-import mts.services.help.web.MappingHandler;
+import mts.services.help.web.MappingHandlerImp;
 
 
 @Configuration
 public class CheeringConfiguration {
-
-    // Столкнулся с проблемой при прогоне тестов:
-    // если поменять CheeringService и CheeringManagerImp местами в конфиге,
-    // то в тесте CheeringManagerTest возможен случай, когда
-    // cheeringService не инициализирован.
-    // Если запускать не конкретный тест, а весь тестовый класс, то ошибка 100%
-
 
     @Instance
     public CheeringService cheeringService(CheeringInMemRepository repository) {
@@ -29,7 +23,7 @@ public class CheeringConfiguration {
         return new CheeringManagerImp(cheeringService);
     }
 
-//    TODO: переделть на интерфейс, но зачем, если интерфейс сейчас пустой и контроллер один
+//    TODO: нужен ли интерфейс, если интерфейс сейчас пустой и контроллер один и ищу контроллер по аннотации
     @Instance
     public CheeringController cheeringController(CheeringManager cheeringManager) {
         return new CheeringController(cheeringManager);
@@ -44,7 +38,7 @@ public class CheeringConfiguration {
 
     public MappingHandler handler() {
         try {
-            return new MappingHandler();
+            return new MappingHandlerImp();
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
