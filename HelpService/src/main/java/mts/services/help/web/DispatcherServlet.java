@@ -12,31 +12,26 @@ import java.lang.reflect.InvocationTargetException;
 
 public class DispatcherServlet extends HttpServlet {
 
+    private MappingHandler handler;
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        // СДЕЛАТЬ КОНТЕКСТ ЗДЕСЬ
+
+        ApplicationContext context;
         try {
-            ApplicationContext context = new ApplicationContext();
+            context = new ApplicationContext();
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+
+        handler = context.getInstance(MappingHandler.class);
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.service(req, resp);
-        String method = req.getMethod();
 
-        if (method.equals("GET") || method.equals("POST")) {
-
-        }
     }
-
-//    @Override
-//    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-//        super.service(req, res);
-//    }
-
 
 }

@@ -1,5 +1,8 @@
 package mts.services.help.web;
 
+import mts.services.help.CheeringController;
+import mts.services.help.view.SupportRequest;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,11 +20,10 @@ public class MappingHandler {
 
 //    TODO: сделать сбор маппинга динамическим, чтобы не менять компонент
     public MappingHandler() throws NoSuchMethodException {
-        // Возможно тут должны быть методы сервлета
-//        urlMapping.put("getPhrase", CheeringManager.class.getMethod("getCheeringPhrase"));
-//        urlMapping.put("addPhrase", CheeringManager.class.getMethod("addCheeringPhrase"));
-        urlMapping.put("getPhrase", DEP_CheeringServlet.class.getMethod("doGet"));
-        urlMapping.put("addPhrase", DEP_CheeringServlet.class.getMethod("doPost"));
+        urlMapping.put("/getPhrase", CheeringController.class.getMethod("getPhrase"));
+        urlMapping.put("/addPhrase", CheeringController.class.getMethod("addPhrase", SupportRequest.class));
+//        urlMapping.put("getPhrase", DEP_CheeringServlet.class.getMethod("doGet"));
+//        urlMapping.put("addPhrase", DEP_CheeringServlet.class.getMethod("doPost"));
     }
 
 
