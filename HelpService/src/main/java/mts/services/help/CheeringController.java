@@ -9,7 +9,7 @@ import mts.services.help.view.SupportResponse;
 
 public class CheeringController implements Controller {
 
-    private final CheeringManager cheeringManager;
+    private CheeringManager cheeringManager;
 
     public CheeringController(CheeringManager cheeringManager) {
         this.cheeringManager = cheeringManager;
@@ -28,5 +28,11 @@ public class CheeringController implements Controller {
     }
 
 
+    public CheeringManager getCheeringManager() {
+        return cheeringManager;
+    }
 
+    public void setCheeringManager(CheeringManager cheeringManager) {
+        this.cheeringManager = cheeringManager;
+    }
 }

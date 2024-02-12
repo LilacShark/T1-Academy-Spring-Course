@@ -7,7 +7,7 @@ import mts.services.help.view.SupportResponse;
 
 public class CheeringManagerImp implements CheeringManager {
 
-    private final CheeringService cheeringService;
+    private CheeringService cheeringService;
 
     public CheeringManagerImp(CheeringService cheeringService) {
         this.cheeringService = cheeringService;
@@ -33,5 +33,13 @@ public class CheeringManagerImp implements CheeringManager {
 
     public String depricated_addCheeringPhrase(String phrase) {
         return cheeringService.addCheeringPhrase(phrase);
+    }
+
+    public CheeringService getCheeringService() {
+        return cheeringService;
+    }
+
+    public void setCheeringService(CheeringService cheeringService) {
+        this.cheeringService = cheeringService;
     }
 }

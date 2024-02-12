@@ -7,4 +7,6 @@ public interface CheeringManager {
     SupportResponse getCheeringPhrase();
 
     SupportResponse addCheeringPhrase(SupportRequest request);
+
+    String provideSupport();
 }
