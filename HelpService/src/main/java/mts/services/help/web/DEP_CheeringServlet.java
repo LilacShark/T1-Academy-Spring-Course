@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
-import mts.services.help.CheeringManager;
+import mts.services.help.CheeringManagerImp;
 import mts.services.help.view.SupportRequest;
 import mts.services.help.view.SupportResponse;
 
@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class DEP_CheeringServlet extends HttpServlet {
 
-    private CheeringManager manager;
+    private CheeringManagerImp manager;
     private ApplicationContext context;
 
     @Override
@@ -29,7 +29,7 @@ public class DEP_CheeringServlet extends HttpServlet {
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        this.manager = context.getInstance(CheeringManager.class);
+        this.manager = context.getInstance(CheeringManagerImp.class);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class DEP_CheeringServlet extends HttpServlet {
     public DEP_CheeringServlet() {
     }
 
-    public void setManager(CheeringManager manager) {
+    public void setManager(CheeringManagerImp manager) {
         this.manager = manager;
     }
 }

@@ -2,7 +2,7 @@ package mts.services.help.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mts.services.help.CheeringManager;
+import mts.services.help.CheeringManagerImp;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
@@ -15,14 +15,14 @@ import static org.mockito.Mockito.*;
 class DEPCheeringServletTest {
     private HttpServletRequest req;
     private HttpServletResponse resp;
-    private CheeringManager manager;
+    private CheeringManagerImp manager;
     private DEP_CheeringServlet servlet;
     private StringWriter responseWriter;
 
     @BeforeEach
     public void setUp() throws IOException {
 
-        manager = mock(CheeringManager.class);
+        manager = mock(CheeringManagerImp.class);
         req = mock(HttpServletRequest.class);
         resp = mock(HttpServletResponse.class);
         servlet = new DEP_CheeringServlet();

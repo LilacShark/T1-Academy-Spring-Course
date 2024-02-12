@@ -1,15 +1,15 @@
 package mts.services.help;
 
 import mts.services.help.interfaces.CheeringService;
-import mts.services.help.interfaces.Manager;
+import mts.services.help.interfaces.CheeringManager;
 import mts.services.help.view.SupportRequest;
 import mts.services.help.view.SupportResponse;
 
-public class CheeringManager implements Manager {
+public class CheeringManagerImp implements CheeringManager {
 
-    private CheeringService cheeringService;
+    private final CheeringService cheeringService;
 
-    public CheeringManager(CheeringService cheeringService) {
+    public CheeringManagerImp(CheeringService cheeringService) {
         this.cheeringService = cheeringService;
     }
 

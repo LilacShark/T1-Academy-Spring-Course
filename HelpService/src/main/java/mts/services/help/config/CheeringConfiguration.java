@@ -1,7 +1,8 @@
 package mts.services.help.config;
 
+import mts.services.help.CheeringManagerImp;
 import mts.services.help.CheeringController;
-import mts.services.help.CheeringManager;
+import mts.services.help.interfaces.CheeringManager;
 import mts.services.help.repository.CheeringInMemRepository;
 import mts.services.help.interfaces.CheeringService;
 import mts.services.help.CheeringServiceImp;
@@ -12,25 +13,23 @@ import mts.services.help.web.MappingHandler;
 public class CheeringConfiguration {
 
     // Столкнулся с проблемой при прогоне тестов:
-    // если поменять CheeringService и CheeringManager местами в конфиге,
+    // если поменять CheeringService и CheeringManagerImp местами в конфиге,
     // то в тесте CheeringManagerTest возможен случай, когда
     // cheeringService не инициализирован.
     // Если запускать не конкретный тест, а весь тестовый класс, то ошибка 100%
 
 
-//    TODO: переделть на интерфейсы
     @Instance
     public CheeringService cheeringService(CheeringInMemRepository repository) {
         return new CheeringServiceImp(repository);
     }
 
-//    TODO: переделть на интерфейсы
     @Instance
     public CheeringManager cheeringManager(CheeringService cheeringService) {
-        return new CheeringManager(cheeringService);
+        return new CheeringManagerImp(cheeringService);
     }
 
-//    TODO: переделть на интерфейсы
+//    TODO: переделть на интерфейс, но зачем, если интерфейс сейчас пустой и контроллер один
     @Instance
     public CheeringController cheeringController(CheeringManager cheeringManager) {
         return new CheeringController(cheeringManager);

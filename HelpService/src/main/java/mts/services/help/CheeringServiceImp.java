@@ -5,8 +5,7 @@ import mts.services.help.repository.CheeringInMemRepository;
 
 public class CheeringServiceImp implements CheeringService {
 
-
-    private CheeringInMemRepository repository;
+    private final CheeringInMemRepository repository;
 
     public CheeringServiceImp(CheeringInMemRepository repository) {
         this.repository = repository;
