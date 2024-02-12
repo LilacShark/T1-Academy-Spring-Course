@@ -25,13 +25,13 @@ public class ApplicationContext {
                 if (APPLICATION_CONTEXT_INSTANCE == null) {
                     try {
                         APPLICATION_CONTEXT_INSTANCE = new ApplicationContext();
+                        System.out.println("new ApplicationContext();");
                     } catch (InvocationTargetException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
         }
-
         return APPLICATION_CONTEXT_INSTANCE;
     }
 
@@ -98,7 +98,9 @@ public class ApplicationContext {
                 Field[] declaredFieldsInClass = instance.getClass().getDeclaredFields();
                 for (Field fieldInClass : declaredFieldsInClass) {
                     try {
-                        String setterName = "set" + fieldInClass.getName().substring(0, 1).toUpperCase() + fieldInClass.getName().substring(1);
+                        String setterName = "set"
+                                + fieldInClass.getName().substring(0, 1).toUpperCase()
+                                + fieldInClass.getName().substring(1);
                         Method setter = fieldInClass.getDeclaringClass().getMethod(setterName, fieldInClass.getType());
                         setter.invoke(instance, instances.get(fieldInClass.getType()));
                     } catch (NoSuchMethodException e) {
