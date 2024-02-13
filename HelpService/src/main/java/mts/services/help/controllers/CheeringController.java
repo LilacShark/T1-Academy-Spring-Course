@@ -16,6 +16,10 @@ public class CheeringController implements Controller {
         this.cheeringManager = cheeringManager;
     }
 
+    public CheeringController() {
+
+    }
+
     @UrlMapping("/getPhrase")
     public SupportResponse getPhrase() {
         return cheeringManager.getCheeringPhrase();

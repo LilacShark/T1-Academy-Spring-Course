@@ -15,6 +15,10 @@ public class CheeringManagerImp implements CheeringManager {
         this.cheeringService = cheeringService;
     }
 
+    public CheeringManagerImp() {
+
+    }
+
     public String provideSupport() {
         return "Подбрадривание для Вас: %s".formatted(cheeringService.getPhrase());
     }

@@ -13,6 +13,10 @@ public class CheeringServiceImp implements CheeringService {
         this.repository = repository;
     }
 
+    public CheeringServiceImp() {
+
+    }
+
     public String getCheeringPhrase() {
         return repository.getCheeringPhrase();
     }

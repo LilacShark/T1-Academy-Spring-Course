@@ -15,5 +15,6 @@ public interface MappingHandler {
     void setCheeringController(CheeringController controller);
 
 
+    void initHandler(ApplicationContext context);
 
 }

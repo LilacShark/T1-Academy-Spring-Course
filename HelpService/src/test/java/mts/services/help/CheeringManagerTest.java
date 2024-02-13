@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CheeringManagerTest {
-/*
+
     @Test
     @DisplayName("Сервис возвращает фразу поддержки")
     public void getPhrase() throws InvocationTargetException, IllegalAccessException {
@@ -18,5 +18,5 @@ class CheeringManagerTest {
         assertEquals("Подбрадривание для Вас: Тестовое подбадривание",
                 manager.provideSupport());
     }
-*/
+
 }

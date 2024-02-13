@@ -1,6 +1,7 @@
 package mts.services.help.web;
 
 import jakarta.servlet.http.HttpServletRequest;
+import mts.services.help.ApplicationContext;
 import mts.services.help.config.UrlMapping;
 import mts.services.help.config.SemiAutoWired;
 import mts.services.help.controllers.CheeringController;
@@ -19,25 +20,8 @@ public class MappingHandlerImp implements MappingHandler {
     @SemiAutoWired
     private CheeringController cheeringController;
 
-//    TODO: сделать сбор маппинга динамическим, чтобы не менять компонент
-//    По какой-то причине появляется зацикливание при сборке, если получить тут ApplicationContext. Даже через синглтон
-    public MappingHandlerImp(CheeringController cheeringController) throws NoSuchMethodException {
-
-        Method[] methods = cheeringController.getClass().getDeclaredMethods();
-        for (Method method : methods) {
-            if (method.isAnnotationPresent(UrlMapping.class)) {
-                String value = method.getAnnotation(UrlMapping.class).value();
-                urlMapping.put(value, method);
-            }
-        }
-
-        System.out.println(urlMapping);
-//        getAnnotation(UrlMapping.class).value();
-
-//        urlMapping.put("/getPhrase", CheeringController.class.getMethod("getPhrase"));
-//        urlMapping.put("/addPhrase", CheeringController.class.getMethod("addPhrase", SupportRequest.class));
+    public MappingHandlerImp() {
     }
-
 
     public Method getControllerMethod(HttpServletRequest req) {
         System.out.println("==== PROXY LOGGER ==== TIME:" + LocalDateTime.now() + "URL: " + req.getPathInfo() + " METHOD: " + req.getMethod());
@@ -50,5 +34,16 @@ public class MappingHandlerImp implements MappingHandler {
 
     public CheeringController getCheeringController() {
         return cheeringController;
+    }
+
+    public void initHandler(ApplicationContext context) {
+        Method[] methods = cheeringController.getClass().getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(UrlMapping.class)) {
+                String value = method.getAnnotation(UrlMapping.class).value();
+                urlMapping.put(value, method);
+            }
+        }
+        System.out.println(urlMapping);
     }
 }

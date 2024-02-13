@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
 import mts.services.help.controllers.CheeringController;
 import mts.services.help.interfaces.MappingHandler;
+import mts.services.help.view.SupportResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,11 +17,11 @@ import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 class DispatcherServletTest {
-/*
+
     private HttpServletRequest req;
     private HttpServletResponse resp;
     private DispatcherServlet servlet;
@@ -30,9 +31,9 @@ class DispatcherServletTest {
     private StringWriter responseWriter;
     private Method controllerMethod;
     @BeforeEach
-    public void setUp() throws IOException, NoSuchMethodException {
+    public void setUp() throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
+        context = new ApplicationContext();
         controller = context.getInstance(CheeringController.class);
         handler = new MappingHandlerImp();
         req = mock(HttpServletRequest.class);
@@ -46,17 +47,15 @@ class DispatcherServletTest {
         when(resp.getWriter()).thenReturn(writer);
         when(req.getPathInfo()).thenReturn("/getPhrase");
 
-
-
     }
     @Test
     @DisplayName("Вовзрат корректной фразы из репозитория при вызове /getPhrase")
     void service() throws IOException, NoSuchMethodException, ServletException, InvocationTargetException, IllegalAccessException {
 
-
+/*
         //given
         servlet.init();
-        servlet.setHandler(handler);
+
         SupportResponse testResponse = new SupportResponse("Тестовое подбадривание", "OK");
         doReturn(testResponse).when(this.controllerMethod).invoke(controller);
 
@@ -69,7 +68,7 @@ class DispatcherServletTest {
         System.out.println(testResponse);
         System.out.println(responseWriter.toString());
         assertEquals(testResponse, responseWriter.toString());
+*/
 
-
-    } */
+    }
 }

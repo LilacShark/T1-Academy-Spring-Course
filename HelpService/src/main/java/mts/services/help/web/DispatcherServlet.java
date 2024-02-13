@@ -33,7 +33,9 @@ public class DispatcherServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         handler = context.getInstance(MappingHandler.class);
+        handler.initHandler(context);
         controller = context.getInstance(CheeringController.class);
+
 
     }
 
@@ -41,6 +43,7 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
+
         Method controllerMethod = handler.getControllerMethod(req);
         SupportResponse supportResponse;
         try {

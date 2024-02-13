@@ -13,19 +13,19 @@ import mts.services.help.web.MappingHandlerImp;
 public class CheeringConfiguration {
 
     @Instance
-    public CheeringService cheeringService(CheeringInMemRepository repository) {
-        return new CheeringServiceImp(repository);
+    public CheeringService cheeringService() {
+        return new CheeringServiceImp();
     }
 
     @Instance
-    public CheeringManager cheeringManager(CheeringService cheeringService) {
-        return new CheeringManagerImp(cheeringService);
+    public CheeringManager cheeringManager() {
+        return new CheeringManagerImp();
     }
 
 //    TODO: нужен ли интерфейс, если интерфейс сейчас пустой и контроллер один и ищу контроллер по аннотации
     @Instance
-    public CheeringController cheeringController(CheeringManager cheeringManager) {
-        return new CheeringController(cheeringManager);
+    public CheeringController cheeringController() {
+        return new CheeringController();
     }
 
     @Instance
@@ -34,11 +34,7 @@ public class CheeringConfiguration {
     }
 
     @Instance
-    public MappingHandler handler(CheeringController cheeringController) {
-        try {
-            return new MappingHandlerImp(cheeringController);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
+    public MappingHandler handler() {
+        return new MappingHandlerImp();
     };
 }

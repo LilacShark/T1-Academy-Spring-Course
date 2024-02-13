@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationContextTest {
-/*
+
     @Test
     @DisplayName("Контекст возвращает экземпляр класса")
     public void getInstance() throws InvocationTargetException, IllegalAccessException {
@@ -21,6 +21,6 @@ public class ApplicationContextTest {
         assertEquals(CheeringServiceImp.class,context.getInstance(CheeringService.class).getClass());
         assertEquals(CheeringManagerImp.class,context.getInstance(CheeringManager.class).getClass());
     }
-    */
+
 
 }
