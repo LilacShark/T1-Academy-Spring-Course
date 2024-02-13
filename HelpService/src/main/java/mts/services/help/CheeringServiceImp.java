@@ -1,10 +1,12 @@
 package mts.services.help;
 
+import mts.services.help.config.SemiAutoWired;
 import mts.services.help.interfaces.CheeringService;
 import mts.services.help.repository.CheeringInMemRepository;
 
 public class CheeringServiceImp implements CheeringService {
 
+    @SemiAutoWired
     private CheeringInMemRepository repository;
 
     public CheeringServiceImp(CheeringInMemRepository repository) {

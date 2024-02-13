@@ -26,7 +26,12 @@ public class DispatcherServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
+//        context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
+        try {
+            context = new ApplicationContext();
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         handler = context.getInstance(MappingHandler.class);
         controller = context.getInstance(CheeringController.class);
 

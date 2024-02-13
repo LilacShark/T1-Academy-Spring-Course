@@ -9,7 +9,6 @@ import mts.services.help.interfaces.CheeringService;
 import mts.services.help.CheeringServiceImp;
 import mts.services.help.web.MappingHandlerImp;
 
-
 @Configuration
 public class CheeringConfiguration {
 
@@ -35,10 +34,9 @@ public class CheeringConfiguration {
     }
 
     @Instance
-
-    public MappingHandler handler() {
+    public MappingHandler handler(CheeringController cheeringController) {
         try {
-            return new MappingHandlerImp();
+            return new MappingHandlerImp(cheeringController);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }

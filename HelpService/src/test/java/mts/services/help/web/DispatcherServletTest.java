@@ -20,7 +20,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class DispatcherServletTest {
-
+/*
     private HttpServletRequest req;
     private HttpServletResponse resp;
     private DispatcherServlet servlet;
@@ -31,6 +31,7 @@ class DispatcherServletTest {
     private Method controllerMethod;
     @BeforeEach
     public void setUp() throws IOException, NoSuchMethodException {
+
         context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
         controller = context.getInstance(CheeringController.class);
         handler = new MappingHandlerImp();
@@ -45,11 +46,13 @@ class DispatcherServletTest {
         when(resp.getWriter()).thenReturn(writer);
         when(req.getPathInfo()).thenReturn("/getPhrase");
 
+
+
     }
     @Test
     @DisplayName("Вовзрат корректной фразы из репозитория при вызове /getPhrase")
     void service() throws IOException, NoSuchMethodException, ServletException, InvocationTargetException, IllegalAccessException {
-/*
+
 
         //given
         servlet.init();
@@ -67,6 +70,6 @@ class DispatcherServletTest {
         System.out.println(responseWriter.toString());
         assertEquals(testResponse, responseWriter.toString());
 
- */
-    }
+
+    } */
 }

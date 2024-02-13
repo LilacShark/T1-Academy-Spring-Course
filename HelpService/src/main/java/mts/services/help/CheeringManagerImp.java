@@ -1,5 +1,6 @@
 package mts.services.help;
 
+import mts.services.help.config.SemiAutoWired;
 import mts.services.help.interfaces.CheeringService;
 import mts.services.help.interfaces.CheeringManager;
 import mts.services.help.view.SupportRequest;
@@ -7,6 +8,7 @@ import mts.services.help.view.SupportResponse;
 
 public class CheeringManagerImp implements CheeringManager {
 
+    @SemiAutoWired
     private CheeringService cheeringService;
 
     public CheeringManagerImp(CheeringService cheeringService) {
@@ -25,14 +27,6 @@ public class CheeringManagerImp implements CheeringManager {
     public SupportResponse getCheeringPhrase() {
         String cheeringPhrase = cheeringService.getCheeringPhrase();
         return new SupportResponse(cheeringPhrase, "OK");
-    }
-
-    public String depricated_getCheeringPhrase() {
-        return cheeringService.getCheeringPhrase();
-    }
-
-    public String depricated_addCheeringPhrase(String phrase) {
-        return cheeringService.addCheeringPhrase(phrase);
     }
 
     public CheeringService getCheeringService() {
