@@ -1,7 +1,7 @@
 package mts.services.help;
 
 import mts.services.help.config.Configuration;
-import mts.services.help.config.Controller;
+import mts.services.help.config.WebController;
 import mts.services.help.config.Instance;
 import mts.services.help.config.SemiAutoWired;
 import org.reflections.Reflections;
@@ -11,6 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class ApplicationContext {
 
@@ -24,17 +26,12 @@ public class ApplicationContext {
 
     private void fillControllers() {
         Reflections reflections = new Reflections("mts.services.help.controllers");
-        controllers = reflections.getTypesAnnotatedWith(Controller.class)
+        controllers = reflections.getTypesAnnotatedWith(WebController.class)
                 .stream()
                 .map(type -> {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (InstantiationException | IllegalAccessException
-                             | InvocationTargetException | NoSuchMethodException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .toList();
+                    System.out.println("==== fillControllers " + type);
+                    return instances.get(type);
+                }).toList();
     }
 
     private void fillInstances() throws InvocationTargetException, IllegalAccessException {
@@ -59,6 +56,9 @@ public class ApplicationContext {
             for (Method method : methods) {
 //                final var instance = loggingProxyWrapper(method.invoke(configuration));
                 instances.put(method.getReturnType(), method.invoke(configuration));
+            }
+            for (Class<?> aClass : instances.keySet()) {
+                System.out.println("==== fillInstances " + aClass + " " + instances.get(aClass));
             }
 
             for (Method method : methods) {

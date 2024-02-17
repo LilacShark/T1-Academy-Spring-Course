@@ -2,22 +2,19 @@ package mts.services.help.controllers;
 
 import mts.services.help.config.SemiAutoWired;
 import mts.services.help.config.UrlMapping;
+import mts.services.help.config.WebController;
+import mts.services.help.interfaces.CheeringController;
 import mts.services.help.interfaces.CheeringManager;
-import mts.services.help.interfaces.Controller;
 import mts.services.help.view.SupportRequest;
 import mts.services.help.view.SupportResponse;
 
-public class CheeringController implements Controller {
+@WebController
+public class CheeringControllerImp implements CheeringController {
 
     @SemiAutoWired
     private CheeringManager cheeringManager;
 
-    public CheeringController(CheeringManager cheeringManager) {
-        this.cheeringManager = cheeringManager;
-    }
-
-    public CheeringController() {
-
+    public CheeringControllerImp() {
     }
 
     @UrlMapping("/getPhrase")

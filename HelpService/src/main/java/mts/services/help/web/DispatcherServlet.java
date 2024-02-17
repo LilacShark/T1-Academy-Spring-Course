@@ -7,26 +7,25 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
-import mts.services.help.controllers.CheeringController;
 import mts.services.help.interfaces.MappingHandler;
 import mts.services.help.view.SupportResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class DispatcherServlet extends HttpServlet {
-
+    private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
     private ApplicationContext context;
     private MappingHandler handler;
-    private CheeringController controller;
-
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        logger.info("==== INIT START ====");
 
-//        context = ApplicationContext.get_APPLICATION_CONTEXT_INSTANCE();
         try {
             context = new ApplicationContext();
         } catch (InvocationTargetException | IllegalAccessException e) {
@@ -34,23 +33,22 @@ public class DispatcherServlet extends HttpServlet {
         }
         handler = context.getInstance(MappingHandler.class);
         handler.initHandler(context);
-        controller = context.getInstance(CheeringController.class);
 
-
+        logger.info("==== INIT END ====");
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-
+        Object controllerClass = handler.getControllerClass(req);
         Method controllerMethod = handler.getControllerMethod(req);
         SupportResponse supportResponse;
         try {
             if (controllerMethod.getParameters().length == 0) {
-                supportResponse = (SupportResponse) controllerMethod.invoke(controller);
+                supportResponse = (SupportResponse) controllerMethod.invoke(controllerClass);
             } else {
-                supportResponse = (SupportResponse) controllerMethod.invoke(controller, req);
+                supportResponse = (SupportResponse) controllerMethod.invoke(controllerClass, req);
             }
 
         } catch (IllegalAccessException | InvocationTargetException e) {

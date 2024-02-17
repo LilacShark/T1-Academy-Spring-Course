@@ -4,7 +4,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
-import mts.services.help.controllers.CheeringController;
+import mts.services.help.controllers.CheeringControllerImp;
+import mts.services.help.interfaces.CheeringController;
 import mts.services.help.interfaces.MappingHandler;
 import mts.services.help.view.SupportResponse;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,8 +52,8 @@ class DispatcherServletTest {
     @Test
     @DisplayName("Вовзрат корректной фразы из репозитория при вызове /getPhrase")
     void service() throws IOException, NoSuchMethodException, ServletException, InvocationTargetException, IllegalAccessException {
-
 /*
+
         //given
         servlet.init();
 
@@ -68,7 +69,7 @@ class DispatcherServletTest {
         System.out.println(testResponse);
         System.out.println(responseWriter.toString());
         assertEquals(testResponse, responseWriter.toString());
-*/
 
+*/
     }
 }

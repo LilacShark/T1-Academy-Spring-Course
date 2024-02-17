@@ -1,7 +1,8 @@
 package mts.services.help.config;
 
 import mts.services.help.CheeringManagerImp;
-import mts.services.help.controllers.CheeringController;
+import mts.services.help.controllers.CheeringControllerImp;
+import mts.services.help.interfaces.CheeringController;
 import mts.services.help.interfaces.CheeringManager;
 import mts.services.help.interfaces.MappingHandler;
 import mts.services.help.repository.CheeringInMemRepository;
@@ -22,10 +23,9 @@ public class CheeringConfiguration {
         return new CheeringManagerImp();
     }
 
-//    TODO: нужен ли интерфейс, если интерфейс сейчас пустой и контроллер один и ищу контроллер по аннотации
     @Instance
     public CheeringController cheeringController() {
-        return new CheeringController();
+        return new CheeringControllerImp();
     }
 
     @Instance
