@@ -1,10 +1,26 @@
 package mts.actual.services.help.broker;
 
-// ??????? точно нало так или ну его
-public class Subscriber implements Runnable {
-    @Override
-    public void run() {
+import mts.actual.services.help.interfaces.CheeringService;
+import org.springframework.scheduling.annotation.Scheduled;
+
+
+public class Subscriber {
+
+    private CheeringService service;
+    private MessageBroker broker;
+
+    public Subscriber() {
+    }
+
+    @Scheduled(fixedRate = 60000)
+    public void getMessageFromBroker() {
 
     }
 
 }
+
+//public class Subscriber implements Runnable {
+// зачем ранебл был нужен?
+//    @Override
+//    public void run() {
+//    }
