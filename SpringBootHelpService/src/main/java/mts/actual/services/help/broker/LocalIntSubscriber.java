@@ -14,7 +14,7 @@ public class LocalIntSubscriber implements IntSubscriber {
         this.broker = broker;
     }
 
-    @Subscriber
+    @Subscriber(fixedRate = 1000)
     public void getMessagesFromBroker() {
         System.out.println("=== САБСКРАЙБЕР ПРОВЕРЯЕТ БРОКЕР === ..");
         CheeringPhrase polled = broker.poll();

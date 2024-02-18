@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Scheduled(fixedRate = 5000)
+@Scheduled
 public @interface Subscriber {
-
+    long fixedRate() default -1L;
 }
