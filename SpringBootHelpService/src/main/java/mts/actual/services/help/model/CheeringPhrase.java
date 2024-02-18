@@ -19,11 +19,23 @@ public class CheeringPhrase {
         this.phrase = phrase;
     }
 
+
     public int getRandomValue() {
         return randomValue;
     }
 
     public String getPhrase() {
         return phrase;
+    }
+
+    public void setPhrase(String phrase) {
+        this.phrase = phrase;
+    }
+
+    @Override
+    public String toString() {
+        return "CheeringPhrase{" +
+                "phrase='" + phrase + '\'' +
+                '}';
     }
 }

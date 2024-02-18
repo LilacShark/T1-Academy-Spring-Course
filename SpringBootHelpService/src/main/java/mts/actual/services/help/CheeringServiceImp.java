@@ -18,7 +18,7 @@ public class CheeringServiceImp implements CheeringService {
 
     public String addCheeringPhrase(CheeringPhrase phrase) {
         repository.addCheeringPhrase(phrase);
-        return "Добавлена фраза: " + phrase;
+        return "Добавлена фраза: " + phrase.getPhrase();
     }
 
     @Override

@@ -1,16 +1,7 @@
 package mts.actual.services.help.broker;
 
-public class Publisher {
+import mts.actual.services.help.view.SupportRequest;
 
-    private MessageBroker broker;
-
-    public Publisher() {
-    }
-
-    public Publisher(MessageBroker broker) {
-        this.broker = broker;
-    }
-
-
-
+public interface Publisher {
+    String offer(SupportRequest request);
 }

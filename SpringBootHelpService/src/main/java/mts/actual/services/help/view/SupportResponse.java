@@ -1,28 +1,30 @@
 package mts.actual.services.help.view;
 
+import org.springframework.http.HttpStatus;
+
 public class SupportResponse {
 
-    private String supportPhrase;
-    private String status;
+    private String response;
+    private HttpStatus status;
 
-    public SupportResponse(String supportPhrase, String status) {
-        this.supportPhrase = supportPhrase;
+    public SupportResponse(String response, HttpStatus status) {
+        this.response = response;
         this.status = status;
     }
 
-    public void setSupportPhrase(String supportPhrase) {
-        this.supportPhrase = supportPhrase;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(HttpStatus status) {
         this.status = status;
     }
 
-    public String getSupportPhrase() {
-        return supportPhrase;
+    public String getResponse() {
+        return response;
     }
 
-    public String getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
 }

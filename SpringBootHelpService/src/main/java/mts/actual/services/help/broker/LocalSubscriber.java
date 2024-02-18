@@ -4,7 +4,7 @@ import mts.actual.services.help.interfaces.CheeringService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LocalSubscriber extends Subscriber {
+public class LocalSubscriber implements Subscriber {
 
     private CheeringService service;
 

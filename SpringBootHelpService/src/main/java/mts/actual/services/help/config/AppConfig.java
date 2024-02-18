@@ -3,8 +3,6 @@ package mts.actual.services.help.config;
 import mts.actual.services.help.CheeringServiceImp;
 import mts.actual.services.help.broker.*;
 import mts.actual.services.help.interfaces.CheeringService;
-import mts.actual.services.help.model.CheeringPhrase;
-import mts.actual.services.help.CheeringServiceModernImp;
 import mts.actual.services.help.repository.CheeringInMemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -43,7 +41,7 @@ public class AppConfig {
     @Bean
     @Scope("singleton")
     public MessageBroker broker() {
-        return new MessageBroker();
+        return new LocalMessageBroker();
     }
 
     @Bean
