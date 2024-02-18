@@ -4,4 +4,7 @@ import mts.actual.services.help.model.CheeringPhrase;
 
 public interface MessageBroker {
     boolean offer(CheeringPhrase cheeringPhrase);
+
+    CheeringPhrase poll();
+
 }

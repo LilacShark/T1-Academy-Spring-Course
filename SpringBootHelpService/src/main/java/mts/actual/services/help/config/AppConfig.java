@@ -13,13 +13,6 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class AppConfig {
 
-    private final ApplicationContext context;
-
-    @Autowired
-    public AppConfig(ApplicationContext context) {
-        this.context = context;
-    }
-
     @Bean
     @Scope("singleton")
     public CheeringInMemRepository repository() {
@@ -34,8 +27,8 @@ public class AppConfig {
 
     @Bean
     @Scope("singleton")
-    public Subscriber subscriber(CheeringService service) {
-        return new LocalSubscriber(service);
+    public Subscriber subscriber(CheeringService service, MessageBroker broker) {
+        return new LocalSubscriber(service, broker);
     }
 
     @Bean
@@ -53,22 +46,21 @@ public class AppConfig {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /*
+    private final ApplicationContext context;
+
+    @Autowired
+    public AppConfig(ApplicationContext context) {
+        this.context = context;
+    }
+
+// по этой схеме можно было бы сделать консьюмера,
+//который создаётся в отдельном потоке по вызову из шедьюлера, но зачем
     @Bean
     public CheeringServiceModernImp cheeringService() {
         return new CheeringServiceModernImp() {
             @Override
             public CheeringPhrase getPhrase() {
                 return context.getBean(CheeringPhrase.class);
-            }
-
-            @Override
-            public String getCheeringPhrase() {
-                return null;
-            }
-
-            @Override
-            public String addCheeringPhrase(String phrase) {
-                return null;
             }
         };
     }

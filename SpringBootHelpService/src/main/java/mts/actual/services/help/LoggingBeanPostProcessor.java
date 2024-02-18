@@ -26,7 +26,7 @@ public class LoggingBeanPostProcessor implements BeanPostProcessor {
         final var object = beanName2Target.get(beanName);
         if (object != null) {
             System.out.println("Вызван пост-процессор для beanName: " + beanName + " класса: " + object.getClass() + " bean: " + bean);
-            return new LoggableSupportServiceModern((CheeringServiceModernImp) bean);
+            return new LoggableSupportServiceImp((CheeringServiceImp) bean);
         }
         return bean;
     }
