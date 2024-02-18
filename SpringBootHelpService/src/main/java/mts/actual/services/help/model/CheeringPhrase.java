@@ -1,7 +1,5 @@
 package mts.actual.services.help.model;
 
-import java.util.Random;
-
 public class CheeringPhrase {
 
     private String phrase;
@@ -15,10 +13,6 @@ public class CheeringPhrase {
 
     public String getPhrase() {
         return phrase;
-    }
-
-    public void setPhrase(String phrase) {
-        this.phrase = phrase;
     }
 
     @Override

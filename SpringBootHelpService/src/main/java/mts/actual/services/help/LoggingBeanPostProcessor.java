@@ -25,7 +25,7 @@ public class LoggingBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         final var object = beanName2Target.get(beanName);
         if (object != null) {
-            System.out.println("Вызван пост-процессор для beanName: " + beanName + " класса: " + object.getClass() + " bean: " + bean);
+            System.out.println("=== Вызван пост-процессор для beanName: " + beanName + " класса: " + object.getClass() + " bean: " + bean);
             return new LoggableSupportServiceImp((CheeringServiceImp) bean);
         }
         return bean;

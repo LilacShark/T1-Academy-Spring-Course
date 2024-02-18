@@ -1,14 +1,12 @@
 package mts.actual.services.help.broker;
 
 import mts.actual.services.help.view.SupportRequest;
-import org.springframework.stereotype.Component;
 
-@Component
-public class LocalPublisher implements Publisher {
+public class LocalIntPublisher implements IntPublisher {
 
-    MessageBroker broker;
+    IntMessageBroker broker;
 
-    public LocalPublisher(MessageBroker broker) {
+    public LocalIntPublisher(IntMessageBroker broker) {
         this.broker = broker;
     }
 

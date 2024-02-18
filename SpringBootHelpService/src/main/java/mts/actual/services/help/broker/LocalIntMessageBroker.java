@@ -5,13 +5,13 @@ import mts.actual.services.help.model.CheeringPhrase;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class LocalMessageBroker implements MessageBroker {
+public class LocalIntMessageBroker implements IntMessageBroker {
 
     // 1:00:00
     private BlockingQueue<CheeringPhrase> brokerQueue;
     private int capacity = 10;
 
-    public LocalMessageBroker() {
+    public LocalIntMessageBroker() {
         brokerQueue = new LinkedBlockingQueue(capacity);
     }
 

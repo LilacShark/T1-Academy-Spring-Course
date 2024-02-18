@@ -19,7 +19,7 @@ public class CheeringInMemRepository {
 
     public CheeringPhrase getCheeringPhrase() {
         CheeringPhrase phrase = phrasesHashMap.get((int) (Math.random() * phrasesHashMap.size() + 1));
-        System.out.println(phrase.getPhrase());
+        System.out.println("=== Достали фразу из репозитория " + phrase.getPhrase());
         return phrase;
     }
 
@@ -27,17 +27,3 @@ public class CheeringInMemRepository {
         phrasesHashMap.put(phrasesHashMap.size() + 1, phrase);
     }
 }
-
-/*
-    public String getCheeringPhrase() {
-        String s = phrasesHashMap.get((int) (Math.random() * phrasesHashMap.size() + 1));
-        System.out.println(s);
-        return s;
-    }
-
-
-            phrasesHashMap.put(1, "Всё будет хорошо!");
-        phrasesHashMap.put(2, "Ты молодец!");
-        phrasesHashMap.put(3, "Прикладываю эмоциональный подорожник..");
-        phrasesHashMap.put(4, "Ты справишься!");
- */

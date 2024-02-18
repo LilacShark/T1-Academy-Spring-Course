@@ -1,6 +1,6 @@
 package mts.actual.services.help.web;
 
-import mts.actual.services.help.broker.Publisher;
+import mts.actual.services.help.broker.IntPublisher;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class CheeringController {
 
     private final CheeringService cheeringService;
-    private final Publisher publisher;
+    private final IntPublisher intPublisher;
 
-    public CheeringController(CheeringService cheeringService, Publisher publisher) {
+    public CheeringController(CheeringService cheeringService, IntPublisher intPublisher) {
         this.cheeringService = cheeringService;
-        this.publisher = publisher;
+        this.intPublisher = intPublisher;
     }
 
     @GetMapping(value = "/getPhrase",
@@ -29,49 +29,12 @@ public class CheeringController {
     @RequestMapping(value = "/addPhrase", method = RequestMethod.POST,
             consumes="application/json", produces = "application/json")
     public SupportResponse addCheeringPhrase(@RequestBody SupportRequest request) {
-        System.out.println(request);
-        String response = publisher.offer(request);
+        System.out.println("=== Пришёл запрос: " + request);
+        String response = intPublisher.offer(request);
         if (response == "Ошибка"){
             return new SupportResponse(response, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             return new SupportResponse(response, HttpStatus.OK);
         }
     }
-
 }
-
-
-//    @RequestBody SupportRequest request
-//,
-//            consumes = MediaType.APPLICATION_JSON_VALUE
-
-//    @GetMapping(value = "/getPhrase")
-//    public ResponseEntity<CheeringPhrase> getCheeringPhrase() {
-//        return ResponseEntity.ok()
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .body(cheeringManager.getCheeringPhrase());
-//    }
-
-/*
-    @RequestMapping(value = "/prices", method = RequestMethod.POST,
-            consumes="application/json", produces = "application/json")
-    public MarketResponse showMarketPrice(@RequestBody MarketRequest marketRequest) {
-
-        System.out.println("showMarketPrice..");
-        return marketManager.showPrice(marketRequest.getGoodName());
-
-    }
-
-
-
-
-    @PostMapping(value = "/addPhrase",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public SupportResponse addCheeringPhrase(SupportRequest request) {
-        System.out.println(request);
-        return publisher.offer(request);
-    }
-
-
-    */
