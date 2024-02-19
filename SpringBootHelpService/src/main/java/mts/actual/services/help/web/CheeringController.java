@@ -1,6 +1,6 @@
 package mts.actual.services.help.web;
 
-import mts.actual.services.help.broker.IntPublisher;
+import mts.broker.broker.IntPublisher;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;

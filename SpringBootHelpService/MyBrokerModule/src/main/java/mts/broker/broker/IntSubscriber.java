@@ -1,6 +1,4 @@
-package mts.actual.services.help.broker;
-
-import mts.actual.services.help.model.CheeringPhrase;
+package mts.broker.broker;
 
 public interface IntSubscriber<T> {
 

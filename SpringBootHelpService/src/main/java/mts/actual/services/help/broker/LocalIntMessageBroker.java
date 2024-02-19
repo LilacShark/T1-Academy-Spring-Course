@@ -1,6 +1,8 @@
 package mts.actual.services.help.broker;
 
 import mts.actual.services.help.model.CheeringPhrase;
+import mts.broker.broker.IntMessageBroker;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -21,8 +23,5 @@ public class LocalIntMessageBroker implements IntMessageBroker<CheeringPhrase> {
     public CheeringPhrase poll() {
         return brokerQueue.poll();
     }
-
-    //            brokerQueue.put(phrase);
-    //            brokerQueue.take();
 
 }
