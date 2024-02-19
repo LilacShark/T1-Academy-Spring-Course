@@ -9,10 +9,7 @@ import mts.services.help.repository.CheeringInMemRepository;
 import mts.services.help.web.MappingHandlerImp;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-
 import java.lang.reflect.InvocationTargetException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationContextTest {
