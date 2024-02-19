@@ -1,11 +1,10 @@
 package mts.actual.services.help.broker;
 
 import mts.actual.services.help.model.CheeringPhrase;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class LocalIntMessageBroker implements IntMessageBroker {
+public class LocalIntMessageBroker implements IntMessageBroker<CheeringPhrase> {
 
     // 1:00:00
     private BlockingQueue<CheeringPhrase> brokerQueue;

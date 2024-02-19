@@ -4,7 +4,7 @@ import mts.actual.services.help.config.Subscriber;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 
-public class LocalIntSubscriber implements IntSubscriber {
+public class LocalIntSubscriber implements IntSubscriber<CheeringPhrase> {
 
     private final CheeringService service;
     private final IntMessageBroker broker;
@@ -17,15 +17,11 @@ public class LocalIntSubscriber implements IntSubscriber {
     @Subscriber(fixedRate = 1000)
     public void getMessagesFromBroker() {
         System.out.println("=== САБСКРАЙБЕР ПРОВЕРЯЕТ БРОКЕР === ..");
-        CheeringPhrase polled = broker.poll();
+        CheeringPhrase polled = (CheeringPhrase) broker.poll();
         if (polled != null) {
             System.out.println("=== Сабскарйбером из брокера получена фраза: " + polled);
             savePhrase(polled);
         }
-    }
-
-    public void pollMessage() {
-        CheeringPhrase poll = broker.poll();
     }
 
     public void savePhrase(CheeringPhrase phrase) {

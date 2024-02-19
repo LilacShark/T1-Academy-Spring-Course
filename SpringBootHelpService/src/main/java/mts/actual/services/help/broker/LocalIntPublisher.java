@@ -2,7 +2,7 @@ package mts.actual.services.help.broker;
 
 import mts.actual.services.help.view.SupportRequest;
 
-public class LocalIntPublisher implements IntPublisher {
+public class LocalIntPublisher implements IntPublisher<SupportRequest> {
 
     IntMessageBroker broker;
 
@@ -10,7 +10,6 @@ public class LocalIntPublisher implements IntPublisher {
         this.broker = broker;
     }
 
-    @Override
     public String offer(SupportRequest request) {
 
         if (broker.offer(request.getCheeringPhrase())) {
