@@ -23,7 +23,8 @@ public class CheeringInMemRepository {
         return phrase;
     }
 
-    public synchronized void addCheeringPhrase(CheeringPhrase phrase) {
+    public synchronized boolean addCheeringPhrase(CheeringPhrase phrase) {
         phrasesHashMap.put(phrasesHashMap.size() + 1, phrase);
+        return true;
     }
 }

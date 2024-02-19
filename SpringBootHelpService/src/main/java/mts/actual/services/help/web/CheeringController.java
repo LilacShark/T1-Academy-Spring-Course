@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class CheeringController {
 
     private final CheeringService cheeringService;
-    private final IntPublisher intPublisher;
+    private final IntPublisher<SupportRequest> intPublisher;
 
-    public CheeringController(CheeringService cheeringService, IntPublisher intPublisher) {
+    public CheeringController(CheeringService cheeringService,
+                              IntPublisher<SupportRequest> intPublisher) {
         this.cheeringService = cheeringService;
         this.intPublisher = intPublisher;
     }
