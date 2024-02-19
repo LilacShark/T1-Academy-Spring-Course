@@ -10,9 +10,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class LocalIntSubscriber implements IntSubscriber<CheeringPhrase> {
 
     private final CheeringService service;
-    private final IntMessageBroker broker;
+    private final IntMessageBroker<CheeringPhrase> broker;
 
-    public LocalIntSubscriber(CheeringService service, IntMessageBroker broker) {
+    public LocalIntSubscriber(CheeringService service, IntMessageBroker<CheeringPhrase> broker) {
         this.service = service;
         this.broker = broker;
     }

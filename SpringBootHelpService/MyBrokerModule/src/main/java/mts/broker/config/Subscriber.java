@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Subscriber {
-    long fixedRate() default -1L;
+//    long fixedRate() default -1L;
 }

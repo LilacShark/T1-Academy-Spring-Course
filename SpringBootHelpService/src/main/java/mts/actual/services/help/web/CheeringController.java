@@ -32,7 +32,7 @@ public class CheeringController {
     public SupportResponse addCheeringPhrase(@RequestBody SupportRequest request) {
         System.out.println("=== Пришёл запрос: " + request);
         String response = intPublisher.offer(request);
-        if (response == "Ошибка"){
+        if (response.equals("Ошибка")){
             return new SupportResponse(response, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             return new SupportResponse(response, HttpStatus.OK);
