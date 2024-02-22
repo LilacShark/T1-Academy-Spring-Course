@@ -4,7 +4,7 @@ import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;
 import mts.actual.services.help.view.SupportResponse;
-import mts.broker.broker.IntPublisher;
+import mts.cheeringbroker.broker.IntPublisher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

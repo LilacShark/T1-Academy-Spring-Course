@@ -1,10 +1,11 @@
 package mts.actual.services.help.web;
 
-import mts.broker.broker.IntPublisher;
+import mts.cheeringbroker.broker.IntPublisher;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;
 import mts.actual.services.help.view.SupportResponse;
+import mts.supportbroker.broker.InMemoryBroker;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,12 @@ public class CheeringController {
     private final CheeringService cheeringService;
     private final IntPublisher<SupportRequest> intPublisher;
 
+
     public CheeringController(CheeringService cheeringService,
                               IntPublisher<SupportRequest> intPublisher) {
         this.cheeringService = cheeringService;
         this.intPublisher = intPublisher;
+
     }
 
     @GetMapping(value = "/getPhrase",
@@ -38,4 +41,5 @@ public class CheeringController {
             return new SupportResponse(response, HttpStatus.OK);
         }
     }
+
 }

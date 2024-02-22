@@ -1,10 +1,10 @@
 package mts.actual.services.help.broker;
 
-import mts.broker.config.Subscriber;
+import mts.cheeringbroker.config.Subscriber;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
-import mts.broker.broker.IntMessageBroker;
-import mts.broker.broker.IntSubscriber;
+import mts.cheeringbroker.broker.IntMessageBroker;
+import mts.cheeringbroker.broker.IntSubscriber;
 import org.springframework.scheduling.annotation.Scheduled;
 
 public class LocalIntSubscriber implements IntSubscriber<CheeringPhrase> {

@@ -1,4 +1,4 @@
-package mts.broker.broker;
+package mts.cheeringbroker.broker;
 
 public interface IntSubscriber<T> {
 

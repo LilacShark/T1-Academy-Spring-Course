@@ -1,7 +1,7 @@
 package mts.actual.services.help.broker;
 
 import mts.actual.services.help.model.CheeringPhrase;
-import mts.broker.broker.IntMessageBroker;
+import mts.cheeringbroker.broker.IntMessageBroker;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
