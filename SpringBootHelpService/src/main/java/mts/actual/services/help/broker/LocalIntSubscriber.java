@@ -1,11 +1,10 @@
 package mts.actual.services.help.broker;
 
-import mts.cheeringbroker.config.Subscriber;
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.cheeringbroker.broker.IntMessageBroker;
 import mts.cheeringbroker.broker.IntSubscriber;
-import org.springframework.scheduling.annotation.Scheduled;
+import mts.cheeringbroker.config.Subscriber;
 
 public class LocalIntSubscriber implements IntSubscriber<CheeringPhrase> {
 
@@ -17,11 +16,11 @@ public class LocalIntSubscriber implements IntSubscriber<CheeringPhrase> {
         this.broker = broker;
     }
 
-    @Scheduled(fixedRate = 5000)
-    @Subscriber
+//    @Scheduled(fixedRate = 5000)
+    @Subscriber(fixedRate = 5000)
     public void getMessagesFromBroker() {
         System.out.println("=== САБСКРАЙБЕР ПРОВЕРЯЕТ БРОКЕР === ..");
-        CheeringPhrase polled = (CheeringPhrase) broker.poll();
+        CheeringPhrase polled = broker.poll();
         if (polled != null) {
             System.out.println("=== Сабскарйбером из брокера получена фраза: " + polled);
             savePhrase(polled);
