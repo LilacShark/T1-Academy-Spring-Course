@@ -1,15 +1,17 @@
-package mts.actual.services.help.config;
+package mts.supportbroker.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mts.actual.services.help.view.SupportRequest;
-import mts.supportbroker.broker.InMemoryBroker;
-import mts.supportbroker.broker.Publisher;
-import mts.supportbroker.broker.SubscriberBeanPostProcessor;
-import mts.supportbroker.broker.SubscriberContainer;
+import mts.supportbroker.broker.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@ConditionalOnProperty(prefix = "inmemory-broker",
+        name = "enabled",
+        havingValue = "true")
 @Configuration
+@EnableConfigurationProperties(InMemConfigProperties.class)
 public class InMemBrokerConfig {
 
     @Bean
@@ -22,8 +24,9 @@ public class InMemBrokerConfig {
         return new InMemoryBroker();
     }
 
+//   перенесли паблишер в аппконфиг
     @Bean
-    public Publisher<SupportRequest> supportRequestPublisher(InMemoryBroker broker, ObjectMapper mapper) {
+    public Publisher supportRequestPublisher(InMemoryBroker broker, ObjectMapper mapper) {
         return new Publisher<>(broker, mapper);
     }
 

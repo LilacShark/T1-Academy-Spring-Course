@@ -1,5 +1,7 @@
 package mts.actual.services.help.broker;
 
+import mts.actual.services.help.broker.v1.LocalIntMessageBroker;
+import mts.actual.services.help.broker.v1.LocalIntPublisher;
 import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;
 import org.junit.jupiter.api.Test;

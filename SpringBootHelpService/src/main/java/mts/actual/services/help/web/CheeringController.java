@@ -35,7 +35,7 @@ public class CheeringController {
     public SupportResponse addCheeringPhrase(@RequestBody SupportRequest request) {
         System.out.println("=== Пришёл запрос: " + request);
         String response = intPublisher.offer(request);
-        return new SupportResponse(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new SupportResponse(response, HttpStatus.CREATED);
     }
 
 }

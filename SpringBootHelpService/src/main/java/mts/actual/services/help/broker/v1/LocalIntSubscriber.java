@@ -1,4 +1,4 @@
-package mts.actual.services.help.broker;
+package mts.actual.services.help.broker.v1;
 
 import mts.actual.services.help.interfaces.CheeringService;
 import mts.actual.services.help.model.CheeringPhrase;

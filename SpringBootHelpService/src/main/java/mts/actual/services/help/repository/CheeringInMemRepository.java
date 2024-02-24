@@ -12,9 +12,9 @@ public class CheeringInMemRepository {
     public CheeringInMemRepository() {
 
         phrasesHashMap.put(1, new CheeringPhrase("Всё будет хорошо!"));
-        phrasesHashMap.put(2, new CheeringPhrase("Ты молодец!"));
-        phrasesHashMap.put(3, new CheeringPhrase("Прикладываю эмоциональный подорожник.."));
-        phrasesHashMap.put(4, new CheeringPhrase("Ты справишься!"));
+//        phrasesHashMap.put(2, new CheeringPhrase("Ты молодец!"));
+//        phrasesHashMap.put(3, new CheeringPhrase("Прикладываю эмоциональный подорожник.."));
+//        phrasesHashMap.put(4, new CheeringPhrase("Ты справишься!"));
     }
 
     public CheeringPhrase getCheeringPhrase() {

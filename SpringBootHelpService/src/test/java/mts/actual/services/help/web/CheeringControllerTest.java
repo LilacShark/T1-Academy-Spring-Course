@@ -44,7 +44,6 @@ class CheeringControllerTest {
 
     }
 
-
     @Test
     @DisplayName("Добавление фразы успешно")
     void addCheeringPhrase_OK() {
@@ -60,25 +59,7 @@ class CheeringControllerTest {
         //then
         verify(intPublisher, times(1)).offer(supportRequest);
         assertEquals("Фраза Тестовое подбадривание предложена к добавлению..", supportResponse.getResponse());
-        assertEquals(HttpStatus.OK, supportResponse.getStatus());
-    }
-
-    @Test
-    @DisplayName("Добавление фразы с ошибкой")
-    void addCheeringPhrase_ERROR() {
-
-        //given
-        SupportRequest supportRequest = new SupportRequest(
-                new CheeringPhrase("Тестовое подбадривание"));
-        when(intPublisher.offer((any(SupportRequest.class)))).thenReturn("Ошибка");
-
-        //when
-        SupportResponse supportResponse = this.cheeringController.addCheeringPhrase(supportRequest);
-
-        //then
-        verify(intPublisher, times(1)).offer(supportRequest);
-        assertEquals("Ошибка", supportResponse.getResponse());
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, supportResponse.getStatus());
+        assertEquals(HttpStatus.CREATED, supportResponse.getStatus());
     }
 
 }

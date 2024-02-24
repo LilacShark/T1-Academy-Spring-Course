@@ -1,14 +1,15 @@
-package mts.actual.services.help.broker;
+package mts.actual.services.help.broker.v1;
 
+import mts.actual.services.help.model.CheeringPhrase;
 import mts.actual.services.help.view.SupportRequest;
 import mts.cheeringbroker.broker.IntMessageBroker;
 import mts.cheeringbroker.broker.IntPublisher;
 
 public class LocalIntPublisher implements IntPublisher<SupportRequest> {
 
-    IntMessageBroker broker;
+    IntMessageBroker<CheeringPhrase> broker;
 
-    public LocalIntPublisher(IntMessageBroker broker) {
+    public LocalIntPublisher(IntMessageBroker<CheeringPhrase> broker) {
         this.broker = broker;
     }
 

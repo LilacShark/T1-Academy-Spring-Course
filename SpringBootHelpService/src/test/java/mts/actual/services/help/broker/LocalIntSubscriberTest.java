@@ -1,6 +1,8 @@
 package mts.actual.services.help.broker;
 
 import mts.actual.services.help.CheeringServiceImp;
+import mts.actual.services.help.broker.v1.LocalIntMessageBroker;
+import mts.actual.services.help.broker.v1.LocalIntSubscriber;
 import mts.actual.services.help.model.CheeringPhrase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
