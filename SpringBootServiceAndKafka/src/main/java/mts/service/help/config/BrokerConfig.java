@@ -12,9 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+//@EnableConfigurationProperties(BrokerConfig.class)
+
 @ConditionalOnProperty(prefix = "inmemory-broker", name = "enabled", havingValue = "true")
 @Configuration
-@EnableConfigurationProperties(BrokerConfig.class)
 public class BrokerConfig {
 
     @Bean

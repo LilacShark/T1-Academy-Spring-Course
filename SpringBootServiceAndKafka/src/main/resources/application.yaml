@@ -1,2 +1,2 @@
 inmemory-broker:
-  enabled: false
+  enabled: true

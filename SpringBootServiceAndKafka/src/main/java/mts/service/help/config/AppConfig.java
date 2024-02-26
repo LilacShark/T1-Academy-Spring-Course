@@ -15,9 +15,9 @@ public class AppConfig {
         return new CheeringInMemRepository();
     }
 
-    @Bean
-    public CheeringService serviceImp(CheeringInMemRepository repository) {
-        return new CheeringServiceImp(repository);
-    }
+//    @Bean
+//    public CheeringService serviceImp(CheeringInMemRepository repository) {
+//        return new CheeringServiceImp(repository);
+//    }
 
 }

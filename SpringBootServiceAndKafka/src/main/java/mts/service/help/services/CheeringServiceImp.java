@@ -6,7 +6,9 @@ import mts.service.help.repository.CheeringInMemRepository;
 import mts.service.help.view.CheeringRequest;
 import mts.service.help.view.CheeringResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CheeringServiceImp implements CheeringService {
 
     private CheeringInMemRepository repository;
