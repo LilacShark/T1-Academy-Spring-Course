@@ -13,7 +13,7 @@ public class CheeringConsumer {
         this.repository = repository;
     }
 
-    @KafkaListener(topics = "cheering", groupId = "server.broadcast",containerFactory = "cheeringKafkaListenerContainerFactory")
+    @KafkaListener(topics = "${phrase.topic.name}", groupId = "${kafka.group.id}",containerFactory = "cheeringKafkaListenerContainerFactory")
     public void cheeringListener(CheeringPhrase message) {
         System.out.println("Получено сообщение из брокера: " + message);
         repository.addCheeringPhrase(message);

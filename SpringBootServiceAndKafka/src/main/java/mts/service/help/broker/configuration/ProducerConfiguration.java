@@ -17,7 +17,7 @@ import java.util.Map;
 @Configuration
 public class ProducerConfiguration {
 
-    @Value("localhost:9092")
+    @Value("${kafka.server}")
     private String kafkaServer;
 
     @Value("producerServer")
