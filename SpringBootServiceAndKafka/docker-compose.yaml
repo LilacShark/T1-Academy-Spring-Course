@@ -7,8 +7,6 @@ services:
       - "2181:2181"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
-    networks:
-      - cheering-network
   kafka:
     image: bitnami/kafka:latest
     container_name: kafka
@@ -21,10 +19,5 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_CREATE_TOPICS: "cheering:1:1"
-    networks:
-      - cheering-network
     depends_on:
       - zookeeper
-networks:
-  cheering-network:
-    driver: bridge

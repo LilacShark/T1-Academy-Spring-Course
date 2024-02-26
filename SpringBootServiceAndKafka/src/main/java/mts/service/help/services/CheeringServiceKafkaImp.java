@@ -31,6 +31,7 @@ public class CheeringServiceKafkaImp implements CheeringService {
     public CheeringResponse addCheeringPhrase(CheeringRequest request) {
         CheeringPhrase cheeringPhrase = request.getCheeringPhrase();
         repository.addCheeringPhrase(cheeringPhrase);
+        System.out.println("Записали в БД: " + cheeringPhrase);
         producer.sendMessage(cheeringPhrase);
 
         return new CheeringResponse("Фраза '" + cheeringPhrase + "' добавлена", HttpStatus.CREATED);

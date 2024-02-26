@@ -14,6 +14,7 @@ public class CheeringProducer {
     private KafkaTemplate<String, CheeringPhrase> kafkaTemplate;
 
     public void sendMessage(CheeringPhrase cheeringPhrase) {
+        System.out.println("Отправлено в брокер: " + cheeringPhrase);
         kafkaTemplate.send(topicName, cheeringPhrase);
     }
 

@@ -15,8 +15,9 @@ public class CheeringConsumer {
 
     @KafkaListener(topics = "cheering", groupId = "server.broadcast",containerFactory = "cheeringKafkaListenerContainerFactory")
     public void cheeringListener(CheeringPhrase message) {
-        System.out.println("Received Message in group foo: " + message);
+        System.out.println("Получено сообщение из брокера: " + message);
         repository.addCheeringPhrase(message);
+        System.out.println("Записали в БД в консьюмере: " + message);
     }
 
 }
