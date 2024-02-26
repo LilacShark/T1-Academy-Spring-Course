@@ -8,6 +8,7 @@ import mts.service.help.repository.CheeringInMemRepository;
 import mts.service.help.view.CheeringRequest;
 import mts.service.help.view.CheeringResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 
 public class CheeringServiceKafkaImp implements CheeringService {
 
@@ -28,6 +29,7 @@ public class CheeringServiceKafkaImp implements CheeringService {
         return repository.getCheeringPhrase();
     }
 
+    @Transactional
     public CheeringResponse addCheeringPhrase(CheeringRequest request) {
         CheeringPhrase cheeringPhrase = request.getCheeringPhrase();
         repository.addCheeringPhrase(cheeringPhrase);
