@@ -1,6 +1,10 @@
+package services;
+
 import mts.service.help.model.CheeringPhrase;
 import mts.service.help.repository.CheeringInMemRepository;
 import mts.service.help.services.CheeringServiceImp;
+import mts.service.help.view.CheeringRequest;
+import mts.service.help.view.CheeringResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,14 +41,15 @@ class CheeringServiceImpTest {
 
         //given
         CheeringPhrase phrase = new CheeringPhrase("Тестовое подбадривание");
+        CheeringRequest request = new CheeringRequest(phrase);
         when(repository.addCheeringPhrase((any(CheeringPhrase.class)))).thenReturn(true);
 
         //when
-        String added = this.cheeringService.addCheeringPhrase(phrase);
+        CheeringResponse response = this.cheeringService.addCheeringPhrase(request);
 
         //then
         verify(repository, times(1)).addCheeringPhrase(phrase);
-        assertEquals("Добавлена фраза: Тестовое подбадривание", added);
+        assertEquals("Фраза 'CheeringPhrase{phrase='Тестовое подбадривание'}' добавлена", response.getResponse());
     }
 
 }

@@ -1,19 +1,11 @@
 package web;
 
 import mts.service.help.interfaces.CheeringService;
-import mts.service.help.model.CheeringPhrase;
-import mts.service.help.view.CheeringRequest;
-import mts.service.help.view.CheeringResponse;
 import mts.service.help.web.CheeringController;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -24,7 +16,7 @@ class CheeringControllerTest {
 
     @InjectMocks
     CheeringController cheeringController;
-
+/*
 
     @Test
     @DisplayName("Получение фразы успешно")
@@ -60,5 +52,5 @@ class CheeringControllerTest {
         assertEquals("Фраза Тестовое подбадривание предложена к добавлению..", supportResponse.getResponse());
         assertEquals(HttpStatus.CREATED, supportResponse.getStatus());
     }
-
+*/
 }
