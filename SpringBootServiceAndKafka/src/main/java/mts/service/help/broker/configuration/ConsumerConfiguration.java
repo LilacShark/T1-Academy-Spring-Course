@@ -20,10 +20,10 @@ import java.util.Map;
 @Configuration
 public class ConsumerConfiguration {
 
-    @Value("${kafka.server}")
+    @Value("localhost:9092")
     private String kafkaServer;
 
-    @Value("${kafka.group.id}")
+    @Value("server.broadcast")
     private String kafkaGroupId;
 
     public ConsumerFactory<String, CheeringPhrase> cheeringConsumerFactory() {

@@ -17,10 +17,10 @@ import java.util.Map;
 @Configuration
 public class ProducerConfiguration {
 
-    @Value("${kafka.server}")
+    @Value("localhost:9092")
     private String kafkaServer;
 
-    @Value("${kafka.producer.id}")
+    @Value("producerServer")
     private String kafkaProducerId;
 
     @Bean

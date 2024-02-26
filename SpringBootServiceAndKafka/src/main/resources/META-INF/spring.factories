@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-mts.service.help.config
+mts.service.help.config.BrokerConfig

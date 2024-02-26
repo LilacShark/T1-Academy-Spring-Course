@@ -1,10 +1,8 @@
 package mts.service.help.config;
 
-import mts.service.help.services.CheeringServiceImp;
-import mts.service.help.broker.CheeringConsumer;
-import mts.service.help.broker.CheeringProducer;
 import mts.service.help.interfaces.CheeringService;
 import mts.service.help.repository.CheeringInMemRepository;
+import mts.service.help.services.CheeringServiceImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
