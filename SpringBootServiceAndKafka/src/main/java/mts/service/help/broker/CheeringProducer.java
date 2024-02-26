@@ -7,7 +7,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 
 public class CheeringProducer {
 
-    @Value(value = "${phrase.topic.name}")
+    @Value(value = "cheering")
     private String topicName;
 
     @Autowired
