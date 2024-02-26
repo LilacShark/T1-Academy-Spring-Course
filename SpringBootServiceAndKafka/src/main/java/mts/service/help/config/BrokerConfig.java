@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-@ConditionalOnProperty(prefix = "kafka-toggle", name = "enabled", havingValue = "true")
+//@ConditionalOnProperty(prefix = "kafka-toggle", name = "enabled", havingValue = "true")
 @Configuration
 public class BrokerConfig {
 

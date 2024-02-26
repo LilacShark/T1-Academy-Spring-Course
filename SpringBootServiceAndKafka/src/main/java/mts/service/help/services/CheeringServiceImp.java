@@ -29,7 +29,7 @@ public class CheeringServiceImp implements CheeringService {
     public CheeringResponse addCheeringPhrase(CheeringRequest request) {
         repository.addCheeringPhrase(request.getCheeringPhrase());
         System.out.println("Записали в БД: " + request.getCheeringPhrase());
-        return new CheeringResponse("Фраза '" + request.getCheeringPhrase() + "' добавлена", HttpStatus.CREATED);
+        return new CheeringResponse("Фраза " + request.getCheeringPhrase() + " добавлена", HttpStatus.CREATED);
     }
 
 }

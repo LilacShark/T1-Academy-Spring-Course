@@ -27,4 +27,12 @@ public class CheeringResponse {
     public HttpStatus getStatus() {
         return status;
     }
+
+    @Override
+    public String toString() {
+        return "CheeringResponse{" +
+                "response='" + response + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

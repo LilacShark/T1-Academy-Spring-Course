@@ -21,11 +21,11 @@ public class CheeringRequest {
         this.cheeringPhrase = cheeringPhrase;
     }
 
+
     @Override
     public String toString() {
         return "CheeringRequest{" +
-                "phrase=" + cheeringPhrase +
+                "cheeringPhrase=" + cheeringPhrase +
                 '}';
     }
-
 }
