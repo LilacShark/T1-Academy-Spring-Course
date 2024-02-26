@@ -4,7 +4,6 @@ import mts.service.help.model.CheeringPhrase;
 import mts.service.help.repository.CheeringInMemRepository;
 import org.springframework.kafka.annotation.KafkaListener;
 
-//@ConditionalOnProperty(value = "kafka.sync.enabled", havingValue = "true", matchIfMissing = true)
 public class CheeringConsumer {
 
     CheeringInMemRepository repository;
