@@ -1,21 +1,42 @@
 package web;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import mts.service.help.interfaces.CheeringService;
-import mts.service.help.web.CheeringController;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class CheeringControllerTest {
 
-    @Mock
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @SpyBean
     CheeringService cheeringService;
 
-    @InjectMocks
-    CheeringController cheeringController;
+    @Test
+    @DisplayName("Сервлет возвращает корреткную фразу")
+    void gotPhraseIsOK() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/getPhrase"))
+                .andExpect(jsonPath("$.phrase")
+                        .value("Всё будет хорошо!"));
+    }
+
+}
+
 /*
 
     @Test
@@ -53,4 +74,3 @@ class CheeringControllerTest {
         assertEquals(HttpStatus.CREATED, supportResponse.getStatus());
     }
 */
-}
