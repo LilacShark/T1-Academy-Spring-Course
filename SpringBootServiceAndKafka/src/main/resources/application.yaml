@@ -1,2 +1,2 @@
-inmemory-broker:
+kafka-toggle:
   enabled: true

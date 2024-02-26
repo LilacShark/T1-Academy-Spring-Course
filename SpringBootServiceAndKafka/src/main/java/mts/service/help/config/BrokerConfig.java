@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-@ConditionalOnProperty(prefix = "inmemory-broker", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "kafka-toggle", name = "enabled", havingValue = "true")
 @Configuration
 public class BrokerConfig {
 
@@ -21,12 +21,12 @@ public class BrokerConfig {
     }
 
     @Bean
-    public CheeringProducer messageProducer() {
+    public CheeringProducer cheeringProducer() {
         return new CheeringProducer();
     }
 
     @Bean
-    public CheeringConsumer messageListener(CheeringInMemRepository repository) {
+    public CheeringConsumer cheeringConsumer(CheeringInMemRepository repository) {
         return new CheeringConsumer(repository);
     }
 
