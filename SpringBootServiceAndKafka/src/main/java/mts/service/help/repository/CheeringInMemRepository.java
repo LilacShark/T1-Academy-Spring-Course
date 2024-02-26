@@ -1,6 +1,6 @@
 package mts.service.help.repository;
 
-import mts.actual.services.help.model.CheeringPhrase;
+import mts.service.help.model.CheeringPhrase;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

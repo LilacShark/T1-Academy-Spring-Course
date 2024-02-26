@@ -1,16 +1,16 @@
 package mts.service.help.view;
 
-import mts.actual.services.help.model.CheeringPhrase;
+import mts.service.help.model.CheeringPhrase;
 
-public class SupportRequest {
+public class CheeringRequest {
 
     private CheeringPhrase cheeringPhrase;
 
-    public SupportRequest(CheeringPhrase cheeringPhrase) {
+    public CheeringRequest(CheeringPhrase cheeringPhrase) {
         this.cheeringPhrase = cheeringPhrase;
     }
 
-    public SupportRequest() {
+    public CheeringRequest() {
     }
 
     public CheeringPhrase getCheeringPhrase() {

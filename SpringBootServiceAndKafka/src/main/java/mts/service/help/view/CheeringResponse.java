@@ -2,12 +2,12 @@ package mts.service.help.view;
 
 import org.springframework.http.HttpStatus;
 
-public class SupportResponse {
+public class CheeringResponse {
 
     private String response;
     private HttpStatus status;
 
-    public SupportResponse(String response, HttpStatus status) {
+    public CheeringResponse(String response, HttpStatus status) {
         this.response = response;
         this.status = status;
     }
