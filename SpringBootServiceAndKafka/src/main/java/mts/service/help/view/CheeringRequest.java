@@ -23,7 +23,7 @@ public class CheeringRequest {
 
     @Override
     public String toString() {
-        return "SupportRequest{" +
+        return "CheeringRequest{" +
                 "phrase=" + cheeringPhrase +
                 '}';
     }
