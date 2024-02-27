@@ -1,6 +1,5 @@
 package mts.service.help.broker.interfaces;
 
-import mts.service.help.interfaces.Message;
 import mts.service.help.model.CheeringPhrase;
 
 public interface Producer {
