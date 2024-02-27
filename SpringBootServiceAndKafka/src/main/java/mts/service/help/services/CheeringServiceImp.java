@@ -12,9 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CheeringServiceImp implements CheeringService {
 
-    @Autowired
     private CheeringInMemRepository repository;
-
+    @Autowired
     public CheeringServiceImp(CheeringInMemRepository repository) {
         this.repository = repository;
     }
