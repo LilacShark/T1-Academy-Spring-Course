@@ -31,7 +31,6 @@ public class ProducerConfiguration {
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         configProps.put(ProducerConfig.CLIENT_ID_CONFIG, kafkaProducerId);
         configProps.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
-        configProps.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "cheer-1");
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }

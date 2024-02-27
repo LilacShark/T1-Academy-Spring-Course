@@ -31,7 +31,8 @@ public class ConsumerConfiguration {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);
-        props.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, IsolationLevel.READ_COMMITTED);
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+//        props.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, IsolationLevel.READ_COMMITTED);
 
         return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(CheeringPhrase.class));
     }
