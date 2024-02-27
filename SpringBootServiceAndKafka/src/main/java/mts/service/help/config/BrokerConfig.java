@@ -3,7 +3,10 @@ package mts.service.help.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mts.service.help.broker.CheeringConsumer;
 import mts.service.help.broker.CheeringProducer;
+import mts.service.help.broker.interfaces.Consumer;
+import mts.service.help.broker.interfaces.Producer;
 import mts.service.help.interfaces.CheeringService;
+import mts.service.help.model.CheeringPhrase;
 import mts.service.help.repository.CheeringInMemRepository;
 import mts.service.help.services.CheeringServiceKafkaImp;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,20 +24,20 @@ public class BrokerConfig {
     }
 
     @Bean
-    public CheeringProducer cheeringProducer() {
+    public Producer<CheeringPhrase> cheeringProducer() {
         return new CheeringProducer();
     }
 
     @Bean
-    public CheeringConsumer cheeringConsumer(CheeringInMemRepository repository) {
+    public Consumer cheeringConsumer(CheeringInMemRepository repository) {
         return new CheeringConsumer(repository);
     }
 
     @Bean
     @Primary
     public CheeringService serviceImp(CheeringInMemRepository repository,
-                                      CheeringProducer producer,
-                                      CheeringConsumer consumer) {
+                                      Producer producer,
+                                      Consumer consumer) {
         return new CheeringServiceKafkaImp(repository, producer, consumer);
     }
 

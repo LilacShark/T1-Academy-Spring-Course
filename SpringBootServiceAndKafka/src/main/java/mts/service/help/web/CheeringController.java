@@ -1,6 +1,7 @@
 package mts.service.help.web;
 
 import mts.service.help.interfaces.CheeringService;
+import mts.service.help.interfaces.Controller;
 import mts.service.help.model.CheeringPhrase;
 import mts.service.help.view.CheeringRequest;
 import mts.service.help.view.CheeringResponse;
@@ -9,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CheeringController {
+public class CheeringController implements Controller {
 
     private final CheeringService cheeringService;
 
