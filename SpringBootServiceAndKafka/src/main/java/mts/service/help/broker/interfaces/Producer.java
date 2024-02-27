@@ -2,7 +2,7 @@ package mts.service.help.broker.interfaces;
 
 import mts.service.help.model.CheeringPhrase;
 
-public interface Producer {
+public interface Producer<T> {
 
-    void sendMessage(CheeringPhrase cheeringPhrase);
+    void sendMessage(T t);
 }

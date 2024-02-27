@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 
-public class CheeringProducer implements Producer {
+public class CheeringProducer implements Producer<CheeringPhrase> {
 
     @Value(value = "${phrase.topic.name}")
     private String topicName;
