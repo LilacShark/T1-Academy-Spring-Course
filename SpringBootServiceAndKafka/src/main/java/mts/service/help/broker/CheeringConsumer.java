@@ -1,10 +1,11 @@
 package mts.service.help.broker;
 
+import mts.service.help.broker.interfaces.Consumer;
 import mts.service.help.model.CheeringPhrase;
 import mts.service.help.repository.CheeringInMemRepository;
 import org.springframework.kafka.annotation.KafkaListener;
 
-public class CheeringConsumer {
+public class CheeringConsumer implements Consumer {
 
     CheeringInMemRepository repository;
 
