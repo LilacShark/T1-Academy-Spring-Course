@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import mts.services.help.ApplicationContext;
 import mts.services.help.config.UrlMapping;
 import mts.services.help.config.SemiAutoWired;
-import mts.services.help.controllers.CheeringControllerImp;
 import mts.services.help.interfaces.CheeringController;
 import mts.services.help.interfaces.MappingHandler;
 import org.slf4j.Logger;
@@ -23,8 +22,6 @@ public class MappingHandlerImp implements MappingHandler {
     private final Map<String, Method> urlMapping = new HashMap<>();
     private final Map<String, Object> urlControllers = new HashMap<>();
 
-    @SemiAutoWired
-    private CheeringController cheeringController;
 
     public MappingHandlerImp() {
     }
@@ -38,10 +35,6 @@ public class MappingHandlerImp implements MappingHandler {
         return urlMapping.get(req.getPathInfo());
     }
 
-    public void setCheeringController(CheeringController controller) {
-        this.cheeringController = controller;
-    }
-
     public void initHandler(ApplicationContext context) {
 
         logger.info("====  public void initHandler(ApplicationContext context) {");
@@ -53,7 +46,7 @@ public class MappingHandlerImp implements MappingHandler {
             Method[] methods = controller.getClass().getDeclaredMethods();
             for (Method method : methods) {
                 if (method.isAnnotationPresent(UrlMapping.class)) {
-                    String value = method.getAnnotation(UrlMapping.class).value();
+                    String value = method.getAnnotation(UrlMapping.class).path();
                     urlControllers.put(value, controller);
                     urlMapping.put(value, method);
                 }
@@ -65,4 +58,5 @@ public class MappingHandlerImp implements MappingHandler {
             System.out.println("====== " + s + "  "+ urlMapping.get(s));
         }
     }
+
 }

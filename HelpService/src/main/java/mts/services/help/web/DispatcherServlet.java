@@ -1,25 +1,26 @@
 package mts.services.help.web;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mts.services.help.ApplicationContext;
+import mts.services.help.interfaces.HttpCallDispatcher;
 import mts.services.help.interfaces.MappingHandler;
-import mts.services.help.view.SupportResponse;
+import mts.services.help.interfaces.MappingProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class DispatcherServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
     private ApplicationContext context;
-    private MappingHandler handler;
+    private MappingHandler mappingHandler;
+    private MappingProvider mappingProvider;
+    private HttpCallDispatcher callDispatcher;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -31,14 +32,27 @@ public class DispatcherServlet extends HttpServlet {
         } catch (InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        handler = context.getInstance(MappingHandler.class);
-        handler.initHandler(context);
+//        mappingHandler = context.getInstance(MappingHandler.class);
+//        mappingHandler.initHandler(context);
+
+        mappingProvider = context.getInstance(MappingProvider.class);
+        mappingProvider.init(context);
+
+        callDispatcher = context.getInstance(HttpCallDispatcher.class);
 
         logger.info("==== INIT END ====");
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        final var handlerMapping = mappingProvider.getMapping(req);
+        callDispatcher.dispatch(handlerMapping, resp);
+    }
+
+}
+
+/*
 
         ObjectMapper objectMapper = new ObjectMapper();
         Object controllerClass = handler.getControllerClass(req);
@@ -61,6 +75,4 @@ public class DispatcherServlet extends HttpServlet {
         objectMapper.writeValue(resp.getWriter(), supportResponse);
 
         resp.getWriter().flush();
-    }
-
-}
+ */

@@ -5,6 +5,7 @@ import mts.services.help.config.UrlMapping;
 import mts.services.help.config.WebController;
 import mts.services.help.interfaces.CheeringController;
 import mts.services.help.interfaces.CheeringManager;
+import mts.services.help.model.HttpMethod;
 import mts.services.help.view.SupportRequest;
 import mts.services.help.view.SupportResponse;
 
@@ -17,12 +18,12 @@ public class CheeringControllerImp implements CheeringController {
     public CheeringControllerImp() {
     }
 
-    @UrlMapping("/getPhrase")
+    @UrlMapping(method = HttpMethod.GET, path = "/getPhrase")
     public SupportResponse getPhrase() {
         return cheeringManager.getCheeringPhrase();
     }
 
-    @UrlMapping("/addPhrase")
+    @UrlMapping(method = HttpMethod.POST, path = "/addPhrase")
     public SupportResponse addPhrase(SupportRequest request) {
         return cheeringManager.addCheeringPhrase(request);
     }
