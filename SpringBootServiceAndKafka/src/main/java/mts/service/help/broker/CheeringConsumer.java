@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 public class CheeringConsumer implements Consumer {
 
-    CheeringInMemRepository repository;
+    final CheeringInMemRepository repository;
 
     public CheeringConsumer(CheeringInMemRepository repository) {
         this.repository = repository;
