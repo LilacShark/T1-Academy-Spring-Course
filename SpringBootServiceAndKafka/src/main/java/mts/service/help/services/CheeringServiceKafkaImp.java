@@ -1,7 +1,5 @@
 package mts.service.help.services;
 
-import mts.service.help.broker.CheeringConsumer;
-import mts.service.help.broker.CheeringProducer;
 import mts.service.help.broker.interfaces.Consumer;
 import mts.service.help.broker.interfaces.Producer;
 import mts.service.help.interfaces.CheeringService;
@@ -15,10 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class CheeringServiceKafkaImp implements CheeringService {
 
     private CheeringInMemRepository repository;
-    private Producer producer;
+    private Producer<CheeringPhrase> producer;
     private Consumer consumer;
 
-    public CheeringServiceKafkaImp(CheeringInMemRepository repository, Producer producer, Consumer consumer) {
+    public CheeringServiceKafkaImp(CheeringInMemRepository repository, Producer<CheeringPhrase> producer, Consumer consumer) {
         this.repository = repository;
         this.producer = producer;
         this.consumer = consumer;
@@ -34,11 +32,10 @@ public class CheeringServiceKafkaImp implements CheeringService {
     @Transactional
     public CheeringResponse addCheeringPhrase(CheeringRequest request) {
         CheeringPhrase cheeringPhrase = request.getCheeringPhrase();
-        repository.addCheeringPhrase(cheeringPhrase);
-        System.out.println("Записали в БД: " + cheeringPhrase);
-        producer.sendMessage(cheeringPhrase);
-
+        if (!repository.alreadyContains(cheeringPhrase)) {
+            repository.addCheeringPhrase(cheeringPhrase);
+            producer.sendMessage(cheeringPhrase);
+        }
         return new CheeringResponse("Фраза " + cheeringPhrase.getPhrase() + " добавлена", HttpStatus.CREATED);
     }
-
 }

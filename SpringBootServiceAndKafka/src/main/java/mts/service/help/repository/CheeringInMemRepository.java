@@ -10,7 +10,6 @@ public class CheeringInMemRepository {
     private final Map<Integer, CheeringPhrase> phrasesHashMap = new ConcurrentHashMap<>();
 
     public CheeringInMemRepository() {
-
         phrasesHashMap.put(1, new CheeringPhrase("Всё будет хорошо!"));
     }
 
@@ -23,5 +22,9 @@ public class CheeringInMemRepository {
     public synchronized boolean addCheeringPhrase(CheeringPhrase phrase) {
         phrasesHashMap.put(phrasesHashMap.size() + 1, phrase);
         return true;
+    }
+
+    public boolean alreadyContains(CheeringPhrase phrase) {
+        return  phrasesHashMap.containsValue(phrase);
     }
 }
