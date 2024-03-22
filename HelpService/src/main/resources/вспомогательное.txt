@@ -1,0 +1,4 @@
+curl GET http://localhost:8080/help-service-v1/support
+curl --data "phrase=TEST phrase" POST http://localhost:8080/help-service-v1/support
+
+curl GET http://localhost:8080/help-service-v1/getPhrase

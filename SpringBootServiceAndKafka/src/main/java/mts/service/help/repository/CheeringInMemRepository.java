@@ -23,4 +23,8 @@ public class CheeringInMemRepository {
         phrasesRepository.add(phrase);
         return true;
     }
+
+    public boolean alreadyContains(CheeringPhrase phrase) {
+        return  phrasesHashMap.containsValue(phrase);
+    }
 }
