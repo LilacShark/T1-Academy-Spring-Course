@@ -1,16 +1,43 @@
 package mts.services.help.web;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-//1:04:00
-//1:09:00 -- добавление маппингов куда-то
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 class DispatcherServletTest {
 
 
     @Test
     @DisplayName("Вовзрат корректной фразы из репозитория при вызове /getPhrase")
-    void service() {
+    void service() throws ServletException, IOException {
+/*
+//        StringBuilder builder = new StringBuilder();
+//        PrintWriter printWriter = new PrintWriter();
+        final var request = mock(HttpServletRequest.class);
+        final var response = mock(HttpServletResponse.class);
+        final var dispatcherServlet = new DispatcherServlet();
+        dispatcherServlet.init();
+        dispatcherServlet.service(request, response);
+
+        when(request.getRequestURL()).thenReturn(new StringBuffer("/getPhrase"));
+        when(request.getMethod()).thenReturn("GET");
+//        when(response.getWriter()).thenReturn(printWriter);
+
+*/
+
+//        assertEquals();
+
+    }
+}
 /*
         final StringWriter stringWriter = new StringWriter();
         final PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -34,12 +61,6 @@ class DispatcherServletTest {
                 """, stringWriter.toString());
 
  */
-
-
-
-    }
-}
-
 
 /*
 

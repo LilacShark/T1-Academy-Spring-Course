@@ -12,9 +12,8 @@ public interface MappingHandler {
     @Logged
     Method getControllerMethod(HttpServletRequest req);
 
-//    void setCheeringController(CheeringControllerImp controller);
-
     void initHandler(ApplicationContext context);
 
     Object getControllerClass(HttpServletRequest req);
+
 }

@@ -5,7 +5,6 @@ import mts.services.help.config.WebController;
 import mts.services.help.config.Instance;
 import mts.services.help.config.SemiAutoWired;
 import org.reflections.Reflections;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,6 +18,7 @@ public class ApplicationContext {
     private final Map<Class<?>, Object> instances = new HashMap<>();
     private List<?> controllers;
 
+
     public ApplicationContext() throws InvocationTargetException, IllegalAccessException {
         fillInstances();
         fillControllers();
@@ -26,12 +26,7 @@ public class ApplicationContext {
 
     private void fillControllers() {
         Reflections reflections = new Reflections("mts.services.help.controllers");
-        controllers = reflections.getTypesAnnotatedWith(WebController.class)
-                .stream()
-                .map(type -> {
-                    System.out.println("==== fillControllers " + type);
-                    return instances.get(type);
-                }).toList();
+        controllers = reflections.getTypesAnnotatedWith(WebController.class).stream().toList();
     }
 
     private void fillInstances() throws InvocationTargetException, IllegalAccessException {
@@ -96,4 +91,6 @@ public class ApplicationContext {
     public List<?> getControllers() {
         return List.copyOf(controllers);
     }
+
+
 }

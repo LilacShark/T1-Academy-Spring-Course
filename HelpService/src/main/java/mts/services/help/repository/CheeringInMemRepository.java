@@ -1,27 +1,27 @@
 package mts.services.help.repository;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CheeringInMemRepository {
 
-    private final Map<Integer, String> phrasesHashMap = new ConcurrentHashMap<>();
+    private final List<String> phrasesRepository =  new CopyOnWriteArrayList<>();
 
     public CheeringInMemRepository() {
 
-        phrasesHashMap.put(1, "Всё будет хорошо!");
-        phrasesHashMap.put(2, "Ты молодец!");
-        phrasesHashMap.put(3, "Прикладываю эмоциональный подорожник..");
-        phrasesHashMap.put(4, "Ты справишься!");
+        phrasesRepository.add("Всё будет хорошо!");
+        phrasesRepository.add("Ты молодец!");
+        phrasesRepository.add("Прикладываю эмоциональный подорожник..");
+        phrasesRepository.add("Ты справишься!");
     }
 
     public String getCheeringPhrase() {
-        String s = phrasesHashMap.get((int) (Math.random() * phrasesHashMap.size() + 1));
+        String s = phrasesRepository.get((int) (Math.random() * phrasesRepository.size() + 1));
         System.out.println(s);
         return s;
     }
 
     public synchronized void addCheeringPhrase(String phrase) {
-        phrasesHashMap.put(phrasesHashMap.size() + 1, phrase);
+        phrasesRepository.add(phrase);
     }
 }
