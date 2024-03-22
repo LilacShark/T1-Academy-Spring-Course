@@ -9,10 +9,10 @@ public class CheeringInMemRepository {
 
     public CheeringInMemRepository() {
 
-        phrasesRepository.add(1, "Всё будет хорошо!");
-        phrasesRepository.add(2, "Ты молодец!");
-        phrasesRepository.add(3, "Прикладываю эмоциональный подорожник..");
-        phrasesRepository.add(4, "Ты справишься!");
+        phrasesRepository.add("Всё будет хорошо!");
+        phrasesRepository.add("Ты молодец!");
+        phrasesRepository.add("Прикладываю эмоциональный подорожник..");
+        phrasesRepository.add("Ты справишься!");
     }
 
     public String getCheeringPhrase() {
